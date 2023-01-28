@@ -74,8 +74,10 @@ function calculate_boxes(){
     var box_x1 = A;
     var box_x2 = A+delta;
     var current_index = index_A;
-    var current_y_min = FUNCTION_PTS_Y[index_A]
-    var current_y_max = FUNCTION_PTS_Y[index_A]
+    var current_y_begin = FUNCTION_PTS_Y[index_A];
+    var current_y_end = undefined;
+    var current_y_min = FUNCTION_PTS_Y[index_A];
+    var current_y_max = FUNCTION_PTS_Y[index_A];
     while (box_x2<B){
         for(var i=0; i<=delta; i++){
             if(FUNCTION_PTS_Y[current_index+i] > current_y_max){
@@ -85,12 +87,14 @@ function calculate_boxes(){
                 current_y_min = FUNCTION_PTS_Y[current_index+i];
             }
         }
-        BOXES.push( [box_x1, box_x2, current_y_min, current_y_max] );
+        current_y_end = FUNCTION_PTS_Y[current_index+delta]
+        BOXES.push( [box_x1, box_x2, current_y_min, current_y_max, current_y_begin, current_y_end] );
         box_x1 += delta;
         box_x2 += delta;
         current_index += delta;
         current_y_min = FUNCTION_PTS_Y[current_index];
         current_y_max = FUNCTION_PTS_Y[current_index];
+        current_y_begin = FUNCTION_PTS_Y[current_index];
     }
     var i = 0;
     while(FUNCTION_PTS_X[current_index+i] <= B){
@@ -102,5 +106,6 @@ function calculate_boxes(){
         }
         i++;
     }
-    BOXES.push( [box_x1, B, current_y_min, current_y_max] );
+    current_y_end = FUNCTION_PTS_Y[current_index+i-1];
+    BOXES.push( [box_x1, B, current_y_min, current_y_max, current_y_begin, current_y_end] );
 }
