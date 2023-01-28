@@ -172,6 +172,9 @@ canvas.addEventListener('mouseup', function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
     DOWN = false;
+    if(FUNCTION_PTS.length === 1) {
+        FUNCTION_PTS.push({ x: Math.round(x)+1, y: y });
+    }
     add_point(x, y);
     auto_bounds();
     draw_all();
