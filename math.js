@@ -14,8 +14,8 @@ function calculate_max_epsilon(){
 }
 
 function change_epsilon(){
-    epsilon = document.getElementById("range_Epsilon").value/50;
-    if (epsilon < calculate_max_epsilon()) {
+    EPSILON = document.getElementById("range_Epsilon").value/50;
+    if (EPSILON < calculate_max_epsilon()) {
         console.log(epsilon, "Epsilon is too small");
     } else{
         console.log(epsilon, "Epsilon is good");
