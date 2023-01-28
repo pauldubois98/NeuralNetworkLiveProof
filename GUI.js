@@ -127,6 +127,15 @@ function change_bounds(){
     draw_all();
 }
 
+function change_epsilon(){
+    EPSILON = document.getElementById("range_Epsilon").value;
+    if (EPSILON < calculate_max_epsilon()) {
+        console.log(EPSILON, "Epsilon is too small");
+    } else{
+        console.log(EPSILON, "Epsilon is good");
+    }
+}
+
 // user interaction
 canvas.addEventListener('mouseup', function (e) {
     var rect = canvas.getBoundingClientRect();

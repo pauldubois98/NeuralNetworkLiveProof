@@ -12,15 +12,6 @@ function calculate_max_epsilon(){
     return max_epsilon;
 }
 
-function change_epsilon(){
-    EPSILON = document.getElementById("range_Epsilon").value/50;
-    if (EPSILON < calculate_max_epsilon()) {
-        console.log(EPSILON, "Epsilon is too small");
-    } else{
-        console.log(EPSILON, "Epsilon is good");
-    }
-}
-
 function calculate_boxes(){
     BOXES = [];
     // find index of A in FUNCTION_PTS_X
