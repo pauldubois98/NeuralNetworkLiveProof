@@ -8,6 +8,26 @@ function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
+function draw_axes(x=50, y=550, arrow_size=8) {
+    clear();
+    ctx.beginPath();
+    ctx.strokeStyle = "black";
+    ctx.lineWidth = 2;
+    ctx.moveTo(x, HEIGHT);
+    ctx.lineTo(x, 2);
+    ctx.lineTo(x-arrow_size, arrow_size+2);
+    ctx.lineTo(x, 2);
+    ctx.lineTo(x+arrow_size, arrow_size+2);
+    ctx.lineTo(x, 2);
+    ctx.moveTo(0, y);
+    ctx.lineTo(WIDTH-2, y);
+    ctx.lineTo(WIDTH-2-arrow_size, y-arrow_size);
+    ctx.lineTo(WIDTH-2, y);
+    ctx.lineTo(WIDTH-2-arrow_size, y+arrow_size);
+    ctx.lineTo(WIDTH-2, y);
+    ctx.stroke();
+}
+
 function draw_func() {
     ctx.beginPath();
     ctx.strokeStyle = "black";
@@ -19,4 +39,5 @@ function draw_func() {
     ctx.stroke();
 }
 
+draw_axes();
 draw_func();
