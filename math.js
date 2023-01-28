@@ -61,7 +61,7 @@ function check_delta(delta){
 function calculate_boxes(){
     // caculate delta
     var delta = 1;
-    while (check_delta(delta)) {
+    while (check_delta(delta) && delta < FUNCTION_PTS_X.length+1) {
         delta++;
     }
     delta--;
