@@ -121,7 +121,7 @@ canvas.addEventListener('mousedown', function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
     DOWN = true;
-    FUNCTION_PTS_X = [x];
+    FUNCTION_PTS_X = [Math.round(x)];
     FUNCTION_PTS_Y = [y];
     clear();
     draw_axes();
