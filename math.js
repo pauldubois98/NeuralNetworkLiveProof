@@ -22,12 +22,16 @@ function calculate_boxes_smart(){
     var box_x1 = A;
     var box_x2 = A;
     var current_index = index_A;
-    var current_y_min = FUNCTION_PTS_Y[index_A]
-    var current_y_max = FUNCTION_PTS_Y[index_A]
+    var current_y_min = FUNCTION_PTS_Y[index_A];
+    var current_y_max = FUNCTION_PTS_Y[index_A];
+    var current_y_begin = FUNCTION_PTS_Y[index_A];
+    var current_y_end = undefined;
     for(current_index = index_A+1; FUNCTION_PTS_X[current_index] <= B; current_index++){
         if( Math.abs(current_y_max - current_y_min) > EPSILON ){
             box_x2 = FUNCTION_PTS_X[current_index-1];
-            BOXES.push( [box_x1, box_x2, current_y_min, current_y_max] );
+            current_y_end = FUNCTION_PTS_Y[current_index-1];
+            BOXES.push( [box_x1, box_x2, current_y_min, current_y_max, current_y_begin, current_y_end] );
+            current_y_begin = FUNCTION_PTS_Y[current_index-1];
             box_x1 = FUNCTION_PTS_X[current_index-1];
             current_y_min = FUNCTION_PTS_Y[current_index];
             current_y_max = FUNCTION_PTS_Y[current_index];
@@ -42,7 +46,8 @@ function calculate_boxes_smart(){
     }
     if (BOXES[BOXES.length-1][1] !== B) {
         box_x2 = B
-        BOXES.push( [box_x1, box_x2, current_y_min, current_y_max] );
+        current_y_end = FUNCTION_PTS_Y[current_index-1];
+        BOXES.push( [box_x1, box_x2, current_y_min, current_y_max, current_y_begin, current_y_end] );
     }
 }
 
