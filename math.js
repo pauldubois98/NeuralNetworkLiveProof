@@ -114,7 +114,7 @@ function calculate_boxes() {
         current_y_begin = FUNCTION_PTS[current_index].y;
     }
     var i = 0;
-    while (FUNCTION_PTS[current_index + i].x <= B) {
+    while (current_index + i < FUNCTION_PTS.length && FUNCTION_PTS[current_index + i].x <= B) {
         if (FUNCTION_PTS[current_index + i].y > current_y_max) {
             current_y_max = FUNCTION_PTS[current_index + i].y;
         }
