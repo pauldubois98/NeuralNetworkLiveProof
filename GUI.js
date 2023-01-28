@@ -2,8 +2,7 @@ var canvas = document.getElementById('plot');
 var ctx = canvas.getContext('2d');
 const HEIGHT = canvas.height;
 const WIDTH = canvas.width;
-FUNCTION_PTS_X = [];
-FUNCTION_PTS_Y = [];
+var FUNCTION_PTS = [];
 var BOXES = [];
 var EPSILON = 75;
 var DOWN = false;
@@ -45,11 +44,10 @@ function draw_bounds() {
 }
 
 function typical_function(x) {
-    FUNCTION_PTS_X = [];
-    FUNCTION_PTS_Y = [];
+    FUNCTION_PTS = [];
     for (var x = -3; x < WIDTH + 3; x++) {
-        FUNCTION_PTS_X.push(x);
-        FUNCTION_PTS_Y.push(HEIGHT - ((HEIGHT / 3) * Math.sin(x * Math.PI * 2 / WIDTH)) - (x * HEIGHT / WIDTH));
+        y = HEIGHT - ((HEIGHT / 3) * Math.sin(x * Math.PI * 2 / WIDTH)) - (x * HEIGHT / WIDTH);
+        FUNCTION_PTS.push({x: x, y: y});
     }
 }
 
@@ -57,10 +55,15 @@ function draw_function() {
     ctx.beginPath();
     ctx.strokeStyle = "black";
     ctx.lineWidth = 5;
-    ctx.moveTo(FUNCTION_PTS_X[0], FUNCTION_PTS_Y[0]);
-    for (var i = 1; i < FUNCTION_PTS_X.length; i++) {
-        ctx.lineTo(FUNCTION_PTS_X[i], FUNCTION_PTS_Y[i]);
+    if(FUNCTION_PTS.length !== 0){
+        ctx.moveTo(FUNCTION_PTS[0].x, FUNCTION_PTS[0].y);
     }
+    FUNCTION_PTS.slice(1).forEach(function (point) {
+        ctx.lineTo(point.x, point.y);
+    });
+    // for (var i = 1; i < FUNCTION_PTS.length; i++) {
+    //     ctx.lineTo(FUNCTION_PTS[i].x, FUNCTION_PTS[i].y);
+    // }
     ctx.stroke();
 }
 
@@ -121,31 +124,31 @@ function draw_all(){
 
 function add_point(x,y){
     x = Math.round(x);
-    x_min = FUNCTION_PTS_X[0]
-    x_max = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
-    y_begin = FUNCTION_PTS_Y[0];
-    y_end = FUNCTION_PTS_Y[FUNCTION_PTS_Y.length - 1];
+    x_min = FUNCTION_PTS[0].x
+    x_max = FUNCTION_PTS[FUNCTION_PTS.length - 1].x;
+    y_begin = FUNCTION_PTS[0].y;
+    y_end = FUNCTION_PTS[FUNCTION_PTS.length - 1].y;
     if (x < x_min) {
         for(var xi = x_min-1; xi >= x; xi--){
-            FUNCTION_PTS_X.unshift(xi);
-            FUNCTION_PTS_Y.unshift(y_begin + ((y - y_begin) * (x_min - xi) / (x_min - x)) );
+            y = y_begin + ((y - y_begin) * (x_min - xi) / (x_min - x));
+            FUNCTION_PTS.unshift({x: xi, y: y});
         }
     } else if (x > x_max) {
         for(var xi = x_max+1; xi <= x; xi++){
-            FUNCTION_PTS_X.push(xi);
-            FUNCTION_PTS_Y.push(y_end + ((y - y_end) * (xi - x_max) / (x - x_max)) );
+            y = y_end + ((y - y_end) * (xi - x_max) / (x - x_max));
+            FUNCTION_PTS.push({x: xi, y: y});
         }
     }
 }
 function auto_bounds(){
-    A = FUNCTION_PTS_X[0]
-    B = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
+    A = FUNCTION_PTS[0].x
+    B = FUNCTION_PTS[FUNCTION_PTS.length - 1].x;
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
 }
 function change_bounds(){
-    A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS_X[0]);
-    B = Math.min(document.getElementById('range_B').value, FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1]);
+    A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS[0].x);
+    B = Math.min(document.getElementById('range_B').value, FUNCTION_PTS[FUNCTION_PTS.length - 1].x);
     if(A > B){
         Z = A;
         A = B;
@@ -180,8 +183,7 @@ canvas.addEventListener('mousedown', function (e) {
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
     DOWN = true;
-    FUNCTION_PTS_X = [Math.round(x)];
-    FUNCTION_PTS_Y = [y];
+    FUNCTION_PTS = [{x: Math.round(x), y: y}];
     BOXES = [];
     clear();
     draw_axes();
