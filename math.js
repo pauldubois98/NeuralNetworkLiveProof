@@ -9,7 +9,7 @@ function calculate_max_epsilon(){
     return max_epsilon;
 }
 
-function calculate_boxes_0(){
+function calculate_boxes_smart(){
     BOXES = [];
     // find index of A in FUNCTION_PTS_X
     var index_A = 0;

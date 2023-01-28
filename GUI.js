@@ -89,9 +89,18 @@ function draw_all(){
     draw_bounds();
     draw_function();
     if(BOXES.length == 0 && EPSILON >= calculate_max_epsilon()){
-        calculate_boxes();
+        if(smart_boxes_checkbox.checked){
+            calculate_boxes_smart();
+        } else {
+            calculate_boxes();
+        }
     }
-    draw_boxes();
+    if(draw_boxes_checkbox.checked){
+        draw_boxes();
+    }
+    if(draw_segments_checkbox.checked){
+        draw_segments();
+    }
 }
 
 function add_point(x,y){
@@ -176,7 +185,5 @@ canvas.addEventListener('mousemove', function (e) {
     }
 });
 
-draw_axes();
-draw_bounds();
 typical_function();
-draw_function();
+draw_all();
