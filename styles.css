@@ -4,10 +4,12 @@ body{
     align-items: center;
 }
 
-input[type=range][orient=vertical]{
-    writing-mode: bt-lr; /* IE */
-    -webkit-appearance: slider-vertical; /* Chromium */
-    width: 8px;
-    height: 175px;
-    padding: 0 5px;
+.range{
+    width: 20em;
+    display: flex;
+    align-items: center;
+    page-break-inside: 1em;
+}
+input[type=range]{
+    margin-right: 1em;
 }

@@ -14,7 +14,7 @@ function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
-function draw_axes(x = 50, y = 550, arrow_size = 8) {
+function draw_axes(x = 50, y = 350, arrow_size = 8) {
     ctx.beginPath();
     ctx.strokeStyle = "darkgray";
     ctx.lineWidth = 2;
@@ -49,7 +49,7 @@ function typical_function(x) {
     FUNCTION_PTS_Y = [];
     for (var x = -3; x < WIDTH + 3; x++) {
         FUNCTION_PTS_X.push(x);
-        FUNCTION_PTS_Y.push((HEIGHT * 5 / 6) - ((HEIGHT / 4) * Math.sin(x * Math.PI * 2 / WIDTH)) - (x * HEIGHT / WIDTH / 1.5));
+        FUNCTION_PTS_Y.push(HEIGHT - ((HEIGHT / 3) * Math.sin(x * Math.PI * 2 / WIDTH)) - (x * HEIGHT / WIDTH));
     }
 }
 

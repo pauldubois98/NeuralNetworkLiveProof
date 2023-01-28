@@ -31,10 +31,23 @@
         <circle style="fill:#e74c3c;" id="node_y" cx="450" cy="150" r="20" />
 
     </svg>
-    <canvas id="plot" width="800" height="600"></canvas>
-    <input id='range_A' type="range" min="0" max="800" step="1" value="150" onchange="change_bounds();"/>
-    <input id='range_B' type="range" min="0" max="800" step="1" value="650" onchange="change_bounds();" />
-    <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" onchange="change_epsilon();" orient="vertical"/>
+    <canvas id="plot" width="800" height="400"></canvas>
+    <div class="range">
+        <input id='range_A' type="range" min="0" max="800" step="1" value="150" onchange="change_bounds();"/>
+        <label for="range_A">Left bound</label>
+    </div>
+    <div class="range">
+        <input id='range_B' type="range" min="0" max="800" step="1" value="650" onchange="change_bounds();" />
+        <label for="range_B">Right bound</label>
+    </div>
+    <div class="range">
+        <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" onchange="change_epsilon();"/>
+        <label for="range_Epsilon">Ɛ</label>
+    </div>
+    <!-- <div>
+        <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" onchange="change_epsilon();" orient="vertical"/>
+        <label for="range_Epsilon">Ɛ</label>
+    </div> -->
     <div>
         <input type="checkbox" id="draw_boxes_checkbox" onchange="draw_all();"></input>
         <label for="draw_boxes_checkbox">Draw Boxes</label>
