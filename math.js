@@ -12,13 +12,7 @@ function calculate_max_epsilon() {
 function calculate_boxes_smart() {
     BOXES = [];
     // find index of A in FUNCTION_PTS
-    var index_A = 0;
-    for (var i = 0; i < FUNCTION_PTS.length; i++) {
-        if (FUNCTION_PTS[i].x == A) {
-            index_A = i;
-            break;
-        }
-    }
+    var index_A = FUNCTION_PTS.findIndex(e => e.x==A) 
     var box_x1 = A;
     var box_x2 = A;
     var current_index = index_A;
