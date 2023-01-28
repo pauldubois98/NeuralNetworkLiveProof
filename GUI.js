@@ -67,17 +67,18 @@ function draw_function() {
 function draw_boxes(){
     ctx.beginPath();
     ctx.strokeStyle = "red";
-    ctx.lineWidth = 3;
+    ctx.lineWidth = 1;
     for(var i = 0; i < BOXES.length; i++){
         x1 = BOXES[i][0];
         x2 = BOXES[i][1];
-        y1 = BOXES[i][2];
-        y2 = BOXES[i][3];
+        y1 = BOXES[i][2]-3;
+        y2 = BOXES[i][3]+3;
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y1);
         ctx.lineTo(x2, y2);
         ctx.lineTo(x1, y2);
         ctx.lineTo(x1, y1);
+        ctx.lineTo(x2, y1);
     }
     ctx.stroke();
 }
