@@ -90,6 +90,13 @@ function auto_bounds(){
 function change_bounds(){
     A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS_X[0]);
     B = Math.min(document.getElementById('range_B').value, FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1]);
+    if(A > B){
+        Z = A;
+        A = B;
+        B = Z;
+    }
+    document.getElementById('range_A').value = A;
+    document.getElementById('range_B').value = B;
     clear();
     draw_axes();
     draw_bounds();
