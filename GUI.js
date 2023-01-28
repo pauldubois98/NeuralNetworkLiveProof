@@ -83,6 +83,21 @@ function draw_boxes(){
     ctx.stroke();
 }
 
+function draw_segments(){
+    ctx.beginPath();
+    ctx.strokeStyle = "blue";
+    ctx.lineWidth = 3;
+    for(var i = 0; i < BOXES.length; i++){
+        x1 = BOXES[i][0];
+        x2 = BOXES[i][1];
+        y1 = BOXES[i][4];
+        y2 = BOXES[i][5];
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+    }
+    ctx.stroke();
+}
+
 function draw_all(){
     BOXES = [];
     clear();
