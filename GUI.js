@@ -141,8 +141,10 @@ function auto_bounds() {
     document.getElementById('range_B').value = B;
 }
 function change_bounds() {
-    A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS[0].x);
+    A = Math.min(document.getElementById('range_A').value, FUNCTION_PTS[FUNCTION_PTS.length - 1].x);
+    A = Math.max(A, FUNCTION_PTS[0].x);
     B = Math.min(document.getElementById('range_B').value, FUNCTION_PTS[FUNCTION_PTS.length - 1].x);
+    B = Math.max(B, FUNCTION_PTS[0].x);
     if (A > B) {
         Z = A;
         A = B;
