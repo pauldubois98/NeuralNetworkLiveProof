@@ -71,18 +71,15 @@ function draw_boxes(){
     ctx.beginPath();
     ctx.strokeStyle = "red";
     ctx.lineWidth = 1;
-    for(var i = 0; i < BOXES.length; i++){
-        x1 = BOXES[i][0];
-        x2 = BOXES[i][1];
-        y1 = BOXES[i][2]-3;
-        y2 = BOXES[i][3]+3;
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y1);
-        ctx.lineTo(x2, y2);
-        ctx.lineTo(x1, y2);
-        ctx.lineTo(x1, y1);
-        ctx.lineTo(x2, y1);
-    }
+    BOXES.forEach(function(box){
+        const pad = 3;
+        ctx.moveTo(box.x1, box.y_min - pad);
+        ctx.lineTo(box.x2, box.y_min - pad);
+        ctx.lineTo(box.x2, box.y_max + pad);
+        ctx.lineTo(box.x1, box.y_max + pad);
+        ctx.lineTo(box.x1, box.y_min - pad);
+        ctx.lineTo(box.x2, box.y_min - pad);
+    });
     ctx.stroke();
 }
 
@@ -90,14 +87,10 @@ function draw_segments(){
     ctx.beginPath();
     ctx.strokeStyle = "blue";
     ctx.lineWidth = 3;
-    for(var i = 0; i < BOXES.length; i++){
-        x1 = BOXES[i][0];
-        x2 = BOXES[i][1];
-        y1 = BOXES[i][4];
-        y2 = BOXES[i][5];
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-    }
+    ctx.moveTo(BOXES[0].x1, BOXES[0].y_begin);
+    BOXES.forEach(function(box){
+        ctx.lineTo(box.x2, box.y_end);
+    });
     ctx.stroke();
 }
 
