@@ -84,11 +84,12 @@ function draw_boxes(){
 }
 
 function draw_all(){
+    BOXES = [];
     clear();
     draw_axes();
     draw_bounds();
     draw_function();
-    if(BOXES.length == 0 && EPSILON >= calculate_max_epsilon()){
+    if(EPSILON >= calculate_max_epsilon()){
         if(smart_boxes_checkbox.checked){
             calculate_boxes_smart();
         } else {
@@ -126,7 +127,6 @@ function auto_bounds(){
     B = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
-    BOXES = [];
 }
 function change_bounds(){
     A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS_X[0]);
@@ -138,12 +138,10 @@ function change_bounds(){
     }
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
-    BOXES = [];
     draw_all();
 }
 
 function change_epsilon(){
-    BOXES = [];
     EPSILON = document.getElementById("range_Epsilon").value;
     if (EPSILON < calculate_max_epsilon()) {
         console.log(EPSILON, "Epsilon is too small");
