@@ -4,6 +4,9 @@ body{
     align-items: center;
 }
 
+#columns{
+    display: flex;
+}
 .range{
     width: 20em;
     display: flex;
