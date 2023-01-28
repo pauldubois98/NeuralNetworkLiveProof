@@ -33,15 +33,18 @@
     </svg>
     <canvas id="plot" width="800" height="400"></canvas>
     <div class="range">
-        <input id='range_A' type="range" min="0" max="800" step="1" value="150" onchange="change_bounds();"/>
+        <input id='range_A' type="range" min="0" max="800" step="1" value="150" 
+        oninput="change_bounds(); draw_all();"/>
         <label for="range_A">Left bound</label>
     </div>
     <div class="range">
-        <input id='range_B' type="range" min="0" max="800" step="1" value="650" onchange="change_bounds();" />
+        <input id='range_B' type="range" min="0" max="800" step="1" value="650"
+        oninput="change_bounds(); draw_all();"/>
         <label for="range_B">Right bound</label>
     </div>
     <div class="range">
-        <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" onchange="change_epsilon();"/>
+        <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" 
+        oninput="change_epsilon(); draw_all();"/>
         <label for="range_Epsilon">Ɛ</label>
     </div>
     <!-- <div>

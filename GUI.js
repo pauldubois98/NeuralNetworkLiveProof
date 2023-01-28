@@ -153,7 +153,6 @@ function change_bounds(){
     }
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
-    draw_all();
 }
 
 function change_epsilon(){
