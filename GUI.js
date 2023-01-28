@@ -66,12 +66,16 @@ function draw_boxes(){
     ctx.beginPath();
     ctx.strokeStyle = "red";
     ctx.lineWidth = 3;
-    for(var i = 0; i < BOXES_X.length-1; i++){
-        ctx.moveTo(BOXES_X[i], BOXES_Y[i]);
-        ctx.lineTo(BOXES_X[i+1], BOXES_Y[i]);
-        ctx.lineTo(BOXES_X[i+1], BOXES_Y[i+1]);
-        ctx.lineTo(BOXES_X[i], BOXES_Y[i+1]);
-        ctx.lineTo(BOXES_X[i], BOXES_Y[i]);
+    for(var i = 0; i < BOXES.length; i++){
+        x1 = BOXES[i][0];
+        x2 = BOXES[i][1];
+        y1 = BOXES[i][2];
+        y2 = BOXES[i][3];
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x1, y2);
+        ctx.lineTo(x1, y1);
     }
     ctx.stroke();
 }
@@ -81,7 +85,7 @@ function draw_all(){
     draw_axes();
     draw_bounds();
     draw_function();
-    if(BOXES_X.length > 0){
+    if(BOXES.length > 0){
         draw_boxes();
     }
 }
