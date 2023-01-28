@@ -4,6 +4,7 @@ HEIGHT = canvas.height;
 WIDTH = canvas.width;
 FUNCTION_PTS_X = [];
 FUNCTION_PTS_Y = [];
+BOXES = []
 DOWN = false;
 A = 150;
 B = 650;
@@ -85,9 +86,10 @@ function draw_all(){
     draw_axes();
     draw_bounds();
     draw_function();
-    if(BOXES.length > 0){
-        draw_boxes();
+    if(BOXES.length == 0 && EPSILON >= calculate_max_epsilon()){
+        calculate_boxes();
     }
+    draw_boxes();
 }
 
 function add_point(x,y){
@@ -113,6 +115,7 @@ function auto_bounds(){
     B = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
+    BOXES = [];
 }
 function change_bounds(){
     A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS_X[0]);
@@ -124,16 +127,19 @@ function change_bounds(){
     }
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
+    BOXES = [];
     draw_all();
 }
 
 function change_epsilon(){
+    BOXES = [];
     EPSILON = document.getElementById("range_Epsilon").value;
     if (EPSILON < calculate_max_epsilon()) {
         console.log(EPSILON, "Epsilon is too small");
     } else{
         console.log(EPSILON, "Epsilon is good");
     }
+    draw_all();
 }
 
 // user interaction
@@ -153,7 +159,10 @@ canvas.addEventListener('mousedown', function (e) {
     DOWN = true;
     FUNCTION_PTS_X = [Math.round(x)];
     FUNCTION_PTS_Y = [y];
-    draw_all();
+    BOXES = [];
+    clear();
+    draw_axes();
+    draw_bounds();
 });
 canvas.addEventListener('mousemove', function (e) {
     if (DOWN) {
