@@ -51,15 +51,33 @@ function draw_function() {
     ctx.stroke();
 }
 
+function add_point(x,y){
+    x = Math.round(x);
+    y = Math.round(y);
+    x_min = FUNCTION_PTS_X[0]
+    x_max = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
+    y_begin = FUNCTION_PTS_Y[0];
+    y_end = FUNCTION_PTS_Y[FUNCTION_PTS_Y.length - 1];
+    if (x < x_min) {
+        for(var xi = x_min-1; xi >= x; xi--){
+            FUNCTION_PTS_X.unshift(xi);
+            FUNCTION_PTS_Y.unshift(y_begin + ((y - y_begin) * (x_min - xi) / (x_min - x)) );
+        }
+    } else if (x > x_max) {
+        for(var xi = x_max+1; xi <= x; xi++){
+            FUNCTION_PTS_X.push(xi);
+            FUNCTION_PTS_Y.push(y_end + ((y - y_end) * (xi - x_max) / (x - x_max)) );
+        }
+    }
+}
 
 // user interaction
 canvas.addEventListener('mouseup', function (e) {
     var rect = canvas.getBoundingClientRect();
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
-    FUNCTION_PTS_X.push(x);
-    FUNCTION_PTS_Y.push(y);
     DOWN = false;
+    add_point(x,y);
     draw_axes();
     draw_function();
 });
@@ -67,21 +85,17 @@ canvas.addEventListener('mousedown', function (e) {
     var rect = canvas.getBoundingClientRect();
     var x = e.clientX - rect.left;
     var y = e.clientY - rect.top;
-    FUNCTION_PTS_X = [];
-    FUNCTION_PTS_Y = [];
-    FUNCTION_PTS_X.push(x);
-    FUNCTION_PTS_Y.push(y);
     DOWN = true;
+    FUNCTION_PTS_X = [x];
+    FUNCTION_PTS_Y = [y];
 });
 canvas.addEventListener('mousemove', function (e) {
     if (DOWN) {
         var rect = canvas.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
-        FUNCTION_PTS_X.push(x);
-        FUNCTION_PTS_Y.push(y);
+        add_point(x,y);
         draw_function();
-        // console.log("x: " + x + " y: " + y);
     }
 });
 
