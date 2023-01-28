@@ -84,9 +84,9 @@ function draw_segments() {
     ctx.beginPath();
     ctx.strokeStyle = "blue";
     ctx.lineWidth = 3;
-    ctx.moveTo(BOXES[0].x1, BOXES[0].y_begin);
+    ctx.moveTo(BOXES[0].x1, BOXES[0].y1);
     BOXES.forEach(function (box) {
-        ctx.lineTo(box.x2, box.y_end);
+        ctx.lineTo(box.x2, box.y2);
     });
     ctx.stroke();
 }
