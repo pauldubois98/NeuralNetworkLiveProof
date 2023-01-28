@@ -44,7 +44,7 @@ function calculate_boxes_smart(){
             }
         }
     }
-    if (BOXES[BOXES.length-1][1] !== B) {
+    if (BOXES.length==0 || BOXES[BOXES.length-1][1] !== B) {
         box_x2 = B
         current_y_end = FUNCTION_PTS_Y[current_index-1];
         BOXES.push( [box_x1, box_x2, current_y_min, current_y_max, current_y_begin, current_y_end] );
