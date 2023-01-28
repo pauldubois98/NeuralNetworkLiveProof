@@ -20,7 +20,7 @@ function calculate_boxes_smart() {
     var current_y_max = FUNCTION_PTS[index_A].y;
     var current_y_begin = FUNCTION_PTS[index_A].y;
     var current_y_end = undefined;
-    for (current_index = index_A + 1; FUNCTION_PTS[current_index].x <= B; current_index++) {
+    for (current_index = index_A; FUNCTION_PTS[current_index].x < B; current_index++) {
         if (Math.abs(current_y_max - current_y_min) > EPSILON) {
             box_x2 = FUNCTION_PTS[current_index - 1].x;
             current_y_end = FUNCTION_PTS[current_index - 1].y;
@@ -42,7 +42,7 @@ function calculate_boxes_smart() {
             }
         }
     }
-    if (BOXES.length == 0 || BOXES[BOXES.length - 1][1] !== B) {
+    if (BOXES.length == 0 || BOXES[BOXES.length - 1].x2 !== B) {
         box_x2 = B
         current_y_end = FUNCTION_PTS[current_index - 1].y;
         BOXES.push({
