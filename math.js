@@ -43,7 +43,7 @@ function calculate_boxes_0(){
             }
         }
     }
-    if (BOXES[BOXES.length-1][1] == B) {
+    if (BOXES[BOXES.length-1][1] !== B) {
         box_x2 = B
         BOXES.push( [box_x1, box_x2, current_y_min, current_y_max] );
     }
