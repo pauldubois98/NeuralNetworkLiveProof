@@ -76,6 +76,16 @@ function draw_boxes(){
     ctx.stroke();
 }
 
+function draw_all(){
+    clear();
+    draw_axes();
+    draw_bounds();
+    draw_function();
+    if(BOXES_X.length > 0){
+        draw_boxes();
+    }
+}
+
 function add_point(x,y){
     x = Math.round(x);
     x_min = FUNCTION_PTS_X[0]
@@ -110,10 +120,7 @@ function change_bounds(){
     }
     document.getElementById('range_A').value = A;
     document.getElementById('range_B').value = B;
-    clear();
-    draw_axes();
-    draw_bounds();
-    draw_function();
+    draw_all();
 }
 
 // user interaction
@@ -124,10 +131,7 @@ canvas.addEventListener('mouseup', function (e) {
     DOWN = false;
     add_point(x,y);
     auto_bounds();
-    clear();
-    draw_axes();
-    draw_bounds();
-    draw_function();
+    draw_all();
 });
 canvas.addEventListener('mousedown', function (e) {
     var rect = canvas.getBoundingClientRect();
@@ -136,10 +140,7 @@ canvas.addEventListener('mousedown', function (e) {
     DOWN = true;
     FUNCTION_PTS_X = [Math.round(x)];
     FUNCTION_PTS_Y = [y];
-    clear();
-    draw_axes();
-    draw_bounds();
-    draw_function();
+    draw_all();
 });
 canvas.addEventListener('mousemove', function (e) {
     if (DOWN) {
