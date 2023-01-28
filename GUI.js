@@ -4,10 +4,10 @@ const HEIGHT = canvas.height;
 const WIDTH = canvas.width;
 var FUNCTION_PTS = [];
 var BOXES = [];
-var EPSILON = 75;
+var EPSILON = undefined;
 var DOWN = false;
-var A = 150;
-var B = 650;
+var A = undefined;
+var B = undefined;
 
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -57,10 +57,11 @@ function draw_function() {
     ctx.lineWidth = 5;
     if (FUNCTION_PTS.length !== 0) {
         ctx.moveTo(FUNCTION_PTS[0].x, FUNCTION_PTS[0].y);
+        FUNCTION_PTS.slice(1).forEach(function (point) {
+            ctx.lineTo(point.x, point.y);
+        });
     }
-    FUNCTION_PTS.slice(1).forEach(function (point) {
-        ctx.lineTo(point.x, point.y);
-    });
+    
     ctx.stroke();
 }
 
@@ -81,14 +82,16 @@ function draw_boxes() {
 }
 
 function draw_segments() {
-    ctx.beginPath();
-    ctx.strokeStyle = "blue";
-    ctx.lineWidth = 3;
-    ctx.moveTo(BOXES[0].x1, BOXES[0].y1);
-    BOXES.forEach(function (box) {
-        ctx.lineTo(box.x2, box.y2);
-    });
-    ctx.stroke();
+    if(BOXES.length !== 0) {
+        ctx.beginPath();
+        ctx.strokeStyle = "blue";
+        ctx.lineWidth = 3;
+        ctx.moveTo(BOXES[0].x1, BOXES[0].y1);
+        BOXES.forEach(function (box) {
+            ctx.lineTo(box.x2, box.y2);
+        });
+        ctx.stroke();
+    }
 }
 
 function draw_all() {
@@ -119,14 +122,15 @@ function add_point(x, y) {
     y_begin = FUNCTION_PTS[0].y;
     y_end = FUNCTION_PTS[FUNCTION_PTS.length - 1].y;
     if (x < x_min) {
+        console.log(x, y);
         for (var xi = x_min - 1; xi >= x; xi--) {
-            y = y_begin + ((y - y_begin) * (x_min - xi) / (x_min - x));
-            FUNCTION_PTS.unshift({ x: xi, y: y });
+            const yi = y_begin + ((y - y_begin) * (xi - x_min) / (x - x_min));
+            FUNCTION_PTS.unshift({ x: xi, y: yi });
         }
     } else if (x > x_max) {
         for (var xi = x_max + 1; xi <= x; xi++) {
-            y = y_end + ((y - y_end) * (xi - x_max) / (x - x_max));
-            FUNCTION_PTS.push({ x: xi, y: y });
+            const yi = y_end + ((y - y_end) * (xi - x_max) / (x - x_max));
+            FUNCTION_PTS.push({ x: xi, y: yi });
         }
     }
 }
@@ -151,9 +155,11 @@ function change_bounds() {
 function change_epsilon() {
     EPSILON = document.getElementById("range_Epsilon").value;
     if (EPSILON < calculate_max_epsilon()) {
-        console.log(EPSILON, "Epsilon is too small");
+        // console.log(EPSILON, "Epsilon is too small");
+        error_delta.style.display = "block";
     } else {
-        console.log(EPSILON, "Epsilon is good");
+        // console.log(EPSILON, "Epsilon is good");
+        error_delta.style.display = "none";
     }
     draw_all();
 }
@@ -190,4 +196,6 @@ canvas.addEventListener('mousemove', function (e) {
 });
 
 typical_function();
+change_bounds();
+change_epsilon();
 draw_all();
