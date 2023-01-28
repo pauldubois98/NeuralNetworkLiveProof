@@ -81,6 +81,10 @@ function add_point(x,y){
         }
     }
 }
+function auto_bounds(){
+    A = FUNCTION_PTS_X[0]
+    B = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
+}
 
 // user interaction
 canvas.addEventListener('mouseup', function (e) {
@@ -89,6 +93,7 @@ canvas.addEventListener('mouseup', function (e) {
     var y = e.clientY - rect.top;
     DOWN = false;
     add_point(x,y);
+    auto_bounds();
     clear();
     draw_axes();
     draw_bounds();
