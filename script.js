@@ -6,7 +6,7 @@ FUNCTION_PTS_X = [];
 FUNCTION_PTS_Y = [];
 DOWN = false;
 A = 150;
-B = WIDTH - 150;
+B = 650;
 
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -84,6 +84,16 @@ function add_point(x,y){
 function auto_bounds(){
     A = FUNCTION_PTS_X[0]
     B = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
+    document.getElementById('range_A').value = A;
+    document.getElementById('range_B').value = B;
+}
+function change_bounds(){
+    A = Math.max(document.getElementById('range_A').value, FUNCTION_PTS_X[0]);
+    B = Math.min(document.getElementById('range_B').value, FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1]);
+    clear();
+    draw_axes();
+    draw_bounds();
+    draw_function();
 }
 
 // user interaction
@@ -120,7 +130,6 @@ canvas.addEventListener('mousemove', function (e) {
         draw_function();
     }
 });
-
 
 draw_axes();
 draw_bounds();
