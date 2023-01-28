@@ -51,7 +51,6 @@ function typical_function(x) {
     }
 }
 
-
 function draw_function() {
     ctx.beginPath();
     ctx.strokeStyle = "black";
@@ -59,6 +58,20 @@ function draw_function() {
     ctx.moveTo(FUNCTION_PTS_X[0], FUNCTION_PTS_Y[0]);
     for (var i = 1; i < FUNCTION_PTS_X.length; i++) {
         ctx.lineTo(FUNCTION_PTS_X[i], FUNCTION_PTS_Y[i]);
+    }
+    ctx.stroke();
+}
+
+function draw_boxes(){
+    ctx.beginPath();
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
+    for(var i = 0; i < BOXES_X.length-1; i++){
+        ctx.moveTo(BOXES_X[i], BOXES_Y[i]);
+        ctx.lineTo(BOXES_X[i+1], BOXES_Y[i]);
+        ctx.lineTo(BOXES_X[i+1], BOXES_Y[i+1]);
+        ctx.lineTo(BOXES_X[i], BOXES_Y[i+1]);
+        ctx.lineTo(BOXES_X[i], BOXES_Y[i]);
     }
     ctx.stroke();
 }
