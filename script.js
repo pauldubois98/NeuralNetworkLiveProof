@@ -5,15 +5,16 @@ WIDTH = canvas.width;
 FUNCTION_PTS_X = [];
 FUNCTION_PTS_Y = [];
 DOWN = false;
+A = 150;
+B = WIDTH - 150;
 
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function draw_axes(x = 50, y = 550, arrow_size = 8) {
-    clear();
     ctx.beginPath();
-    ctx.strokeStyle = "black";
+    ctx.strokeStyle = "darkgray";
     ctx.lineWidth = 2;
     ctx.moveTo(x, HEIGHT);
     ctx.lineTo(x, 2);
@@ -27,6 +28,17 @@ function draw_axes(x = 50, y = 550, arrow_size = 8) {
     ctx.lineTo(WIDTH - 2, y);
     ctx.lineTo(WIDTH - 2 - arrow_size, y + arrow_size);
     ctx.lineTo(WIDTH - 2, y);
+    ctx.stroke();
+}
+
+function draw_bounds() {
+    ctx.beginPath();
+    ctx.strokeStyle = "grey";
+    ctx.lineWidth = 3;
+    ctx.moveTo(A, 0);
+    ctx.lineTo(A, HEIGHT);
+    ctx.moveTo(B, 0);
+    ctx.lineTo(B, HEIGHT);
     ctx.stroke();
 }
 
@@ -53,7 +65,6 @@ function draw_function() {
 
 function add_point(x,y){
     x = Math.round(x);
-    y = Math.round(y);
     x_min = FUNCTION_PTS_X[0]
     x_max = FUNCTION_PTS_X[FUNCTION_PTS_X.length - 1];
     y_begin = FUNCTION_PTS_Y[0];
@@ -78,7 +89,9 @@ canvas.addEventListener('mouseup', function (e) {
     var y = e.clientY - rect.top;
     DOWN = false;
     add_point(x,y);
+    clear();
     draw_axes();
+    draw_bounds();
     draw_function();
 });
 canvas.addEventListener('mousedown', function (e) {
@@ -88,6 +101,10 @@ canvas.addEventListener('mousedown', function (e) {
     DOWN = true;
     FUNCTION_PTS_X = [x];
     FUNCTION_PTS_Y = [y];
+    clear();
+    draw_axes();
+    draw_bounds();
+    draw_function();
 });
 canvas.addEventListener('mousemove', function (e) {
     if (DOWN) {
@@ -101,5 +118,6 @@ canvas.addEventListener('mousemove', function (e) {
 
 
 draw_axes();
+draw_bounds();
 typical_function();
 draw_function();
