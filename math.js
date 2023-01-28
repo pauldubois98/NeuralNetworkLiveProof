@@ -33,8 +33,8 @@ function calculate_boxes_smart(){
             BOXES.push( [box_x1, box_x2, current_y_min, current_y_max, current_y_begin, current_y_end] );
             current_y_begin = FUNCTION_PTS_Y[current_index-1];
             box_x1 = FUNCTION_PTS_X[current_index-1];
-            current_y_min = FUNCTION_PTS_Y[current_index];
-            current_y_max = FUNCTION_PTS_Y[current_index];
+            current_y_min = Math.min(FUNCTION_PTS_Y[current_index-1], FUNCTION_PTS_Y[current_index]);
+            current_y_max = Math.max(FUNCTION_PTS_Y[current_index-1], FUNCTION_PTS_Y[current_index]);
         } else{
             if(FUNCTION_PTS_Y[current_index] > current_y_max){
                 current_y_max = FUNCTION_PTS_Y[current_index];
