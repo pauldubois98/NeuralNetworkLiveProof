@@ -1,14 +1,14 @@
-canvas = document.getElementById('plot');
-ctx = canvas.getContext('2d');
-HEIGHT = canvas.height;
-WIDTH = canvas.width;
+var canvas = document.getElementById('plot');
+var ctx = canvas.getContext('2d');
+const HEIGHT = canvas.height;
+const WIDTH = canvas.width;
 FUNCTION_PTS_X = [];
 FUNCTION_PTS_Y = [];
-BOXES = [];
-EPSILON = 75;
-DOWN = false;
-A = 150;
-B = 650;
+var BOXES = [];
+var EPSILON = 75;
+var DOWN = false;
+var A = 150;
+var B = 650;
 
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
