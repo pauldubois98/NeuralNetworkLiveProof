@@ -18,19 +18,19 @@
         <legend>Controls</legend>
         <div>
             <div class="range">
+                <label for="range_A"><math>a</math>:</label>
                 <input id='range_A' type="range" min="0" max="800" step="1" value="150" 
                 oninput="change_bounds(); draw_all();"/>
-                <label for="range_A">Left bound</label>
             </div>
             <div class="range">
+                <label for="range_B"><math>b</math>:</label>
                 <input id='range_B' type="range" min="0" max="800" step="1" value="650"
                 oninput="change_bounds(); draw_all();"/>
-                <label for="range_B">Right bound</label>
             </div>
             <div class="range">
+                <label for="range_Epsilon"><math>Ɛ</math>:</label>
                 <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" 
                 oninput="change_epsilon(); draw_all();"/>
-                <label for="range_Epsilon">Ɛ</label>
             </div>
         </div>
         <div>
@@ -48,6 +48,7 @@
             </div>
         </div>
     </fieldset>
+    <p id="error_delta" class="error_message">Error: δ &lt; 1px.</p>
 
     <div class="separator"></div>
 

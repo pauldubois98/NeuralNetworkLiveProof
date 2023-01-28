@@ -8,13 +8,18 @@ body{
     display: flex;
 }
 .range{
-    width: 20em;
     display: flex;
     align-items: center;
-    page-break-inside: 1em;
+    margin-right: 2em;
 }
-input[type=range]{
-    margin-right: 1em;
+label{
+    width: 1em;
+    text-align: right;
+    margin-right: 0.25em;
+}
+.error_message{
+    color: red;
+    font-weight: bold;
 }
 
 .separator{
@@ -24,4 +29,7 @@ input[type=range]{
     border-radius: 2px;
     margin-top: 3em;
     margin-bottom: 3em;
+}
+#architecture{
+    border: 1px solid grey;
 }
