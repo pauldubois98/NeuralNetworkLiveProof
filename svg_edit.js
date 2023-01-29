@@ -52,4 +52,4 @@ function draw_network(n){
     return [NODES, LINKS];
 }
 
-draw_network(4)
+draw_network(network_size.value);

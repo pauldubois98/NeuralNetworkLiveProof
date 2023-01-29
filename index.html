@@ -54,29 +54,13 @@
 
     <h2>Neural Network</h2>
     <h3>To Fit the Linear Segments</h3>
-    <svg id="architecture" width="500" height="300">
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 50,150 200,0" id="x_2" />
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 50,150 200,-50" id="x_2" />
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 50,150 200,50" id="x_2" />
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 450,150 -200,0" id="x_2" />
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 450,150 -200,-50" id="x_2" />
-        <path style="fill:none;stroke:#4d4d4d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round"
-            d="m 450,150 -200,50" id="x_2" />
-        <circle style="fill:#2ecc71;" id="node_x" cx="50" cy="150" r="20" />
-        <circle style="fill:#3498db;" id="node_1" cx="250" cy="100" r="20" />
-        <circle style="fill:#3498db;" id="node_2" cx="250" cy="150" r="20" />
-        <circle style="fill:#3498db;" id="node_3" cx="250" cy="200" r="20" />
-        <circle style="fill:#e74c3c;" id="node_y" cx="450" cy="150" r="20" />
-    </svg>
+    <input type="number" id="network_size" value="4" min="1" max="10" step="1" onchange="draw_network(network_size.value);"></input>
+    <svg id="architecture" width="500" height="300" style="margin-bottom: 5em;"></svg>
 
 </body>
 
 <script src="math.js"></script>
 <script src="GUI.js"></script>
+<script src="svg_edit.js"></script>
 
 </html>
