@@ -19,18 +19,18 @@
         <div>
             <div class="range">
                 <label for="range_A">a:</label>
-                <input id='range_A' type="range" min="0" max="800" step="1" value="150" 
-                oninput="change_bounds(); draw_all();"/>
+                <input id='range_A' type="range" min="0" max="800" step="1" value="150"
+                    oninput="change_bounds(); draw_all();" />
             </div>
             <div class="range">
                 <label for="range_B">b:</label>
                 <input id='range_B' type="range" min="0" max="800" step="1" value="650"
-                oninput="change_bounds(); draw_all();"/>
+                    oninput="change_bounds(); draw_all();" />
             </div>
             <div class="range">
                 <label for="range_Epsilon">Ɛ:</label>
-                <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75" 
-                oninput="change_epsilon(); draw_all();"/>
+                <input id='range_Epsilon' type="range" min="5" max="100" step="1" value="75"
+                    oninput="change_epsilon(); draw_all();" />
             </div>
         </div>
         <div>
@@ -54,7 +54,10 @@
 
     <h2>Neural Network</h2>
     <h3>To Fit the Linear Segments</h3>
-    <input type="number" id="network_size" value="4" min="1" max="50" step="1" onchange="draw_network(network_size.value);"></input>
+    <input type="number" id="network_size" value="4" min="1" max="50" step="1"
+        onchange="draw_network(network_size.value);"></input>
+    <input type="range" id="range_x" value="300" min="0" , max="800" onchange="apply_network();"
+        onmouseup="apply_network();" oninput="apply_x();" onmousedown="apply_x();"></input>
     <svg id="architecture" width="500" height="300" style="margin-bottom: 5em;"></svg>
 
 </body>

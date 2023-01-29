@@ -4,6 +4,17 @@ var node_x = undefined;
 var node_y = undefined;
 var SIZE = undefined;
 
+function apply_x(x){
+    node_x.style.fill = "#3eFc91";
+    node_x.r.baseVal.value = SIZE/2 + SIZE*Number(range_x.value)/WIDTH;
+}
+
+function apply_network(x){
+    x = Number(range_x.value);
+    node_x.style.fill = "#2ecc71";
+    node_x.r.baseVal.value = SIZE/2 + SIZE*x/WIDTH;
+}
+
 function draw_node(cx, cy, r, color, name){
     var node_element = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
     node_element.setAttribute("id", name);
