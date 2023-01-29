@@ -5,10 +5,16 @@ var node_y = undefined;
 var SIZE = undefined;
 
 
-function apply_x(x){
+function apply_x_y(x){
     // architecture part
-    node_x.style.fill = "#3eFc91";
+    node_x.style.fill = "#3efc91";
     node_x.r.baseVal.value = SIZE/2 + SIZE*Number(x)/WIDTH;
+    node_y.style.fill = "#ff6f5c";
+    var i = 0;
+    while(FUNCTION_PTS[i].x < x){
+        i++;
+    }
+    node_y.r.baseVal.value = SIZE/2 + SIZE*(HEIGHT-FUNCTION_PTS[i].y)/HEIGHT;
     // plot part
     ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
     ctx_bis.drawImage(canvas, 0, 0);
@@ -22,9 +28,8 @@ function apply_x(x){
 
 function apply_network(x){
     x = Number(x);
-    apply_x(x)
+    apply_x_y(x)
     node_x.style.fill = "#2ecc71";
-    node_x.r.baseVal.value = SIZE/2 + SIZE*x/WIDTH;
     NODES.forEach((node, index) => {
         if(index < BOXES.length){
             const box = BOXES[index];
@@ -40,8 +45,8 @@ function apply_network(x){
             node.style.fill = "#54f8fb";
             node.r.baseVal.value = SIZE/2;
         }
-        
       });
+    node_y.style.fill = "#e74c3c";
 }
 
 function draw_node(cx, cy, r, color, name){
