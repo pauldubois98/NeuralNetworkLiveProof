@@ -29,26 +29,26 @@ function connect_nodes(node_a, node_b){
 
 
 function draw_network(n){
+    SIZE = Math.min(25, 250/(Number(n)+1));
+    console.log(SIZE);
     architecture.innerHTML = "";
     NODES = [];
     LINKS = [];
-    node_x = draw_node(50, 25+25*n, 20, "#2ecc71", "node_x");
-    node_y = draw_node(450, 25+25*n, 20, "#e74c3c", "node_y");
+    node_x = draw_node(50, SIZE+SIZE*n, 20, "#2ecc71", "node_x");
+    node_y = draw_node(450, SIZE+SIZE*n, 20, "#e74c3c", "node_y");
     for (var i = 0; i < n; i++){
-        var node = draw_node(250, 50 + i * 50, 20, "#3498db", "node_" + i);
+        var node = draw_node(250, 2*SIZE + i * 2*SIZE, SIZE-1, "#3498db", "node_" + i);
         NODES.push(node);
     }
-    for (var i = 0; i < n; i++){
-        link = connect_nodes(node_x, NODES[i]);
+    NODES.forEach(function(node){
+        link = connect_nodes(node_x, node);
         LINKS.push(link);
-    }
-    for (var i = 0; i < n; i++){
-        link = connect_nodes(NODES[i], node_y);
+    });
+    NODES.forEach(function(node){
+        link = connect_nodes(node, node_y);
         LINKS.push(link);
-    }
-    NODES.push(node_x);
-    NODES.push(node_y);
-    architecture.height.baseVal.value = 50 + 50 * n;
+    });
+    architecture.height.baseVal.value = 500; // 2 * (n+1) * SIZE
     return [NODES, LINKS];
 }
 
