@@ -217,7 +217,29 @@ change_epsilon();
 draw_all();
 
 
+function draw_network_function(){
+    if(BOXES.length !== 0) {
+        ctx_bis.beginPath();
+        ctx_bis.strokeStyle = "cyan";
+        ctx_bis.lineWidth = 3;
+        ctx_bis.moveTo(0, BOXES[0].y1);
+        ctx_bis.lineTo(BOXES[0].x1, BOXES[0].y1);
+        BOXES.forEach((box, index) => {
+            if(index < NODES.length){
+                ctx_bis.lineTo(box.x2, box.y2);
+            }
+        });
+        if(BOXES.length > NODES.length){
+            last_box = BOXES[NODES.length - 1];
+            ctx_bis.lineTo(WIDTH, last_box.y2 + 
+                (WIDTH * (last_box.y2 - last_box.y1) / (last_box.x2 - last_box.x1)));
+        }
+        ctx_bis.stroke();
+    }
+}
+
 function draw_all_bis(){
     ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
     ctx_bis.drawImage(canvas, 0, 0);
+    draw_network_function();
 }

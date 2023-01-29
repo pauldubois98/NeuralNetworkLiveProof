@@ -69,6 +69,7 @@ function connect_nodes(node_a, node_b){
 
 
 function draw_network(n){
+    n = Number(n);
     SIZE = Math.min(25, 250/(Number(n)+1));
     architecture.innerHTML = "";
     NODES = [];
