@@ -1,5 +1,3 @@
-var DOWN_BIS = false;
-
 canvas_bis.addEventListener('mouseup', function (e) {
     var rect = canvas_bis.getBoundingClientRect();
     var x = e.clientX - rect.left;

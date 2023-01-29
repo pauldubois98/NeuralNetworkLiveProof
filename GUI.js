@@ -123,8 +123,7 @@ function draw_all() {
     if (draw_segments_checkbox.checked) {
         draw_segments();
     }
-    ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
-    ctx_bis.drawImage(canvas, 0, 0);
+    draw_all_bis();
 }
 
 function add_point(x, y) {
@@ -216,3 +215,9 @@ typical_function();
 change_bounds();
 change_epsilon();
 draw_all();
+
+
+function draw_all_bis(){
+    ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
+    ctx_bis.drawImage(canvas, 0, 0);
+}

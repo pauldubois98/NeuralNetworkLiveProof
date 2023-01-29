@@ -1,10 +1,3 @@
-var NODES = [];
-var LINKS = [];
-var node_x = undefined;
-var node_y = undefined;
-var SIZE = undefined;
-
-
 function apply_x_y(x){
     // architecture part
     node_x.style.fill = "#3efc91";
@@ -16,8 +9,7 @@ function apply_x_y(x){
     }
     node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-FUNCTION_PTS[i].y)/HEIGHT;
     // plot part
-    ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
-    ctx_bis.drawImage(canvas, 0, 0);
+    draw_all_bis();
     ctx_bis.beginPath();
     ctx_bis.strokeStyle = "green";
     ctx_bis.lineWidth = 4;
@@ -100,3 +92,4 @@ function draw_network(n){
 }
 
 draw_network(network_size.value);
+draw_all_bis(); 
