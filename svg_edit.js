@@ -47,10 +47,9 @@ function draw_network(n){
         LINKS.push(link);
     }
     NODES.push(node_x);
-    NODES.push(node_y)
+    NODES.push(node_y);
+    architecture.height.baseVal.value = 50 + 50 * n;
     return [NODES, LINKS];
 }
 
-// draw_node(100, 100, 10, "#ff0000", "node_z");
-// connect_nodes(node_x, node_z);
 draw_network(4)
