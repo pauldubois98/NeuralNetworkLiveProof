@@ -1,5 +1,8 @@
 var NODES = [];
 var LINKS = [];
+var node_x = undefined;
+var node_y = undefined;
+var SIZE = undefined;
 
 function draw_node(cx, cy, r, color, name){
     var node_element = document.createElementNS("http://www.w3.org/2000/svg", 'circle');
@@ -30,7 +33,6 @@ function connect_nodes(node_a, node_b){
 
 function draw_network(n){
     SIZE = Math.min(25, 250/(Number(n)+1));
-    console.log(SIZE);
     architecture.innerHTML = "";
     NODES = [];
     LINKS = [];
