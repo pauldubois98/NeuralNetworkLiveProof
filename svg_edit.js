@@ -21,7 +21,7 @@ function apply_x(x){
 }
 
 function apply_network(x){
-    x = Number(range_x.value);
+    x = Number(x);
     apply_x(x)
     node_x.style.fill = "#2ecc71";
     node_x.r.baseVal.value = SIZE/2 + SIZE*x/WIDTH;
