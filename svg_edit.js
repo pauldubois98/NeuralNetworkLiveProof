@@ -4,13 +4,25 @@ var node_x = undefined;
 var node_y = undefined;
 var SIZE = undefined;
 
+
 function apply_x(x){
+    // architecture part
     node_x.style.fill = "#3eFc91";
-    node_x.r.baseVal.value = SIZE/2 + SIZE*Number(range_x.value)/WIDTH;
+    node_x.r.baseVal.value = SIZE/2 + SIZE*Number(x)/WIDTH;
+    // plot part
+    ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
+    ctx_bis.drawImage(canvas, 0, 0);
+    ctx_bis.beginPath();
+    ctx_bis.strokeStyle = "green";
+    ctx_bis.lineWidth = 4;
+    ctx_bis.moveTo(x, 0);
+    ctx_bis.lineTo(x, HEIGHT);
+    ctx_bis.stroke();
 }
 
 function apply_network(x){
     x = Number(range_x.value);
+    apply_x(x)
     node_x.style.fill = "#2ecc71";
     node_x.r.baseVal.value = SIZE/2 + SIZE*x/WIDTH;
     NODES.forEach((node, index) => {
