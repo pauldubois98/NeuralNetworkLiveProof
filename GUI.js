@@ -1,5 +1,7 @@
 var canvas = document.getElementById('plot');
 var ctx = canvas.getContext('2d');
+var canvas_bis = document.getElementById('plot_bis');
+var ctx_bis = canvas_bis.getContext('2d');
 const HEIGHT = canvas.height;
 const WIDTH = canvas.width;
 var FUNCTION_PTS = [];
@@ -113,6 +115,8 @@ function draw_all() {
     if (draw_segments_checkbox.checked) {
         draw_segments();
     }
+    ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
+    ctx_bis.drawImage(canvas, 0, 0);
 }
 
 function add_point(x, y) {
