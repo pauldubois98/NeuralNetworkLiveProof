@@ -13,6 +13,23 @@ function apply_network(x){
     x = Number(range_x.value);
     node_x.style.fill = "#2ecc71";
     node_x.r.baseVal.value = SIZE/2 + SIZE*x/WIDTH;
+    NODES.forEach((node, index) => {
+        if(index < BOXES.length){
+            const box = BOXES[index];
+            if(x >= box.x1){
+                node.style.fill = "#3498db";
+                node.r.baseVal.value = SIZE/2 + SIZE*(x-box.x1)/WIDTH;
+            } else{
+                node.style.fill = "#54f8fb";
+                node.r.baseVal.value = SIZE/2;
+            }
+        } else{
+            // more nodes than boxes
+            node.style.fill = "#54f8fb";
+            node.r.baseVal.value = SIZE/2;
+        }
+        
+      });
 }
 
 function draw_node(cx, cy, r, color, name){
