@@ -8,13 +8,13 @@ var SIZE = undefined;
 function apply_x_y(x){
     // architecture part
     node_x.style.fill = "#3efc91";
-    node_x.r.baseVal.value = SIZE/2 + SIZE*Number(x)/WIDTH;
+    node_x.r.baseVal.value = SIZE/2 + 8*SIZE*Number(x)/WIDTH;
     node_y.style.fill = "#ff6f5c";
     var i = 0;
     while(FUNCTION_PTS[i].x < x){
         i++;
     }
-    node_y.r.baseVal.value = SIZE/2 + SIZE*(HEIGHT-FUNCTION_PTS[i].y)/HEIGHT;
+    node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-FUNCTION_PTS[i].y)/HEIGHT;
     // plot part
     ctx_bis.clearRect(0, 0, canvas_bis.width, canvas_bis.height);
     ctx_bis.drawImage(canvas, 0, 0);
