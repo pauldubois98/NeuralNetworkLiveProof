@@ -8,6 +8,7 @@ var EPSILON = undefined;
 var DOWN = false;
 var A = undefined;
 var B = undefined;
+var EXPORT = false;
 
 var canvas_bis = document.getElementById('plot_bis');
 var ctx_bis = canvas_bis.getContext('2d');
@@ -58,13 +59,17 @@ function draw_bounds() {
         ctx.fillRect(A-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
-        ctx.fillText("a", A-6, HEIGHT-4);
+        if(!EXPORT){
+            ctx.fillText("a", A-6, HEIGHT-4);
+        }
         // B
         ctx.fillStyle = "#FFFFFFAA";
         ctx.fillRect(B-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
-        ctx.fillText("b", B-5, HEIGHT-3);
+        if(!EXPORT){
+            ctx.fillText("b", B-5, HEIGHT-3);
+        }
         // // f
         // ctx.beginPath();
         // ctx.strokeStyle = "black";
@@ -123,27 +128,32 @@ function draw_boxes() {
         ctx.beginPath();
         var n = 0;
         ctx.strokeStyle = "red";
+        ctx.font = "12px Arial";
         ctx.lineWidth = 1;
-        ctx.setLineDash([5, 15]);
+        if (!EXPORT){
+            ctx.setLineDash([5, 15]);
+        }
         var last_box_y_max = 0;
         BOXES.forEach(function (box) {
             ctx.moveTo(box.x1, Math.max(box.y_max, last_box_y_max) + pad);
             ctx.lineTo(box.x1, 350);
-            ctx.font = "15px Arial";
-            ctx.font = "12px Arial";
-            ctx.fillText("c", box.x1-9, 362);
-            ctx.fillText(n, box.x1-3, 370);
+            if (!EXPORT){
+                ctx.fillText("c", box.x1-9, 362);
+                ctx.fillText(n, box.x1-3, 370);
+            }
             last_box_y_max = box.y_max;
             n++;
         });
-        ctx.font = "15px Arial";
-        ctx.font = "12px Arial";
-        ctx.fillText("c", B-3, 362);
-        ctx.fillText(n, B+3, 370);
+        if (!EXPORT){
+            ctx.fillText("c", B-3, 362);
+            ctx.fillText(n, B+3, 370);
+        }
         ctx.moveTo(B, BOXES[BOXES.length-1].y_max + pad);
         ctx.lineTo(B, 350);
         ctx.stroke();
-        ctx.setLineDash([]);
+        if (!EXPORT){
+            ctx.setLineDash([]);
+        }
     }
 }
 

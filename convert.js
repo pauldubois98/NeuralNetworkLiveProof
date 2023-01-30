@@ -1,4 +1,5 @@
 function download_svg(){
+    EXPORT = true;
     ctx = new SVGCanvas(800, 400);
     draw_all()
     document.getElementById("svg").innerHTML = ctx.svg.htmlElement.innerHTML
@@ -28,4 +29,5 @@ function download_svg(){
     window.URL.revokeObjectURL(url);
 
     ctx = canvas.getContext('2d');
+    EXPORT = false;
 }
