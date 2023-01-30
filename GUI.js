@@ -58,13 +58,13 @@ function draw_bounds() {
         ctx.fillRect(A-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
-        ctx.fillText("A", A-7, HEIGHT-2);
+        ctx.fillText("a", A-6, HEIGHT-4);
         // B
         ctx.fillStyle = "#FFFFFFAA";
         ctx.fillRect(B-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
-        ctx.fillText("B", B-6, HEIGHT-2);
+        ctx.fillText("b", B-5, HEIGHT-3);
         // // f
         // ctx.beginPath();
         // ctx.strokeStyle = "black";
