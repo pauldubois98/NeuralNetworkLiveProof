@@ -94,7 +94,7 @@ function draw_boxes() {
 function draw_segments() {
     if(BOXES.length !== 0) {
         ctx.beginPath();
-        ctx.strokeStyle = "blue";
+        ctx.strokeStyle = "orange";
         ctx.lineWidth = 3;
         ctx.moveTo(BOXES[0].x1, BOXES[0].y1);
         BOXES.forEach(function (box) {
@@ -220,7 +220,7 @@ draw_all();
 function draw_network_function(){
     if(BOXES.length !== 0) {
         ctx_bis.beginPath();
-        ctx_bis.strokeStyle = "cyan";
+        ctx_bis.strokeStyle = "yellow";
         ctx_bis.lineWidth = 3;
         ctx_bis.moveTo(0, BOXES[0].y1);
         ctx_bis.lineTo(BOXES[0].x1, BOXES[0].y1);
