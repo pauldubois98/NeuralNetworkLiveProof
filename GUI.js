@@ -134,7 +134,6 @@ function add_point(x, y) {
     y_begin = FUNCTION_PTS[0].y;
     y_end = FUNCTION_PTS[FUNCTION_PTS.length - 1].y;
     if (x < x_min) {
-        console.log(x, y);
         for (var xi = x_min - 1; xi >= x; xi--) {
             const yi = y_begin + ((y - y_begin) * (xi - x_min) / (x - x_min));
             FUNCTION_PTS.unshift({ x: xi, y: yi });
