@@ -4,6 +4,10 @@ body{
     align-items: center;
 }
 
+#svg{
+    display: none;
+}
+
 #columns{
     display: flex;
 }
