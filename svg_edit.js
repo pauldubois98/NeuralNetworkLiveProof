@@ -71,13 +71,18 @@ function connect_nodes(node_a, node_b){
 function draw_network(n){
     n = Number(n);
     SIZE = Math.min(25, 250/(Number(n)+1));
+    SHIFT = SIZE;
+    if (n < 10){
+        SIZE = 25;
+        SHIFT = SIZE * (10 - n);
+    }
     architecture.innerHTML = "";
     NODES = [];
     LINKS = [];
-    node_x = draw_node(50, SIZE+SIZE*n, 20, "#2ecc71", "node_x");
-    node_y = draw_node(450, SIZE+SIZE*n, 20, "#e74c3c", "node_y");
+    node_x = draw_node(50, SHIFT+SIZE*n, 20, "#2ecc71", "node_x");
+    node_y = draw_node(450, SHIFT+SIZE*n, 20, "#e74c3c", "node_y");
     for (var i = 0; i < n; i++){
-        var node = draw_node(250, 2*SIZE + i * 2*SIZE, SIZE-1, "#3498db", "node_" + i);
+        var node = draw_node(250, SHIFT + SIZE + i * 2*SIZE, SIZE-1, "#3498db", "node_" + i);
         NODES.push(node);
     }
     NODES.forEach(function(node){

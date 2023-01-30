@@ -18,6 +18,7 @@ var LINKS = [];
 var node_x = undefined;
 var node_y = undefined;
 var SIZE = undefined;
+var SHIFT = undefined;
 
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
