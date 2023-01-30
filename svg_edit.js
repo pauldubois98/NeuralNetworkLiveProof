@@ -82,6 +82,39 @@ function connect_nodes(node_a, node_b){
 }
 
 
+function draw_network_bis(){
+    // canvas part
+    ctx_ter.clearRect(0, 0, canvas_ter.width, canvas_ter.height);
+    // links
+    ctx_ter.beginPath();
+    ctx_ter.strokeStyle = "grey";
+    ctx_ter.lineWidth = 1;
+    LINKS_BIS.forEach(link => {
+        ctx_ter.moveTo(link.x1, link.y1);
+        ctx_ter.lineTo(link.x2, link.y2);
+    });
+    ctx_ter.stroke();
+    // nodes
+    // x
+    ctx_ter.beginPath();
+    ctx_ter.fillStyle = NODE_X.color;
+    ctx_ter.arc(NODE_X.x, NODE_X.y, NODE_X.r, 0, 2 * Math.PI, false);
+    ctx_ter.fill();
+    // y
+    ctx_ter.beginPath();
+    ctx_ter.fillStyle = NODE_Y.color;
+    ctx_ter.arc(NODE_Y.x, NODE_Y.y, NODE_Y.r, 0, 2 * Math.PI, false);
+    ctx_ter.fill();
+    // hidden
+    NODES_BIS.forEach(node => {
+        ctx_ter.beginPath();
+        ctx_ter.fillStyle = node.color;
+        ctx_ter.arc(node.x, node.y, node.r, 0, 2 * Math.PI, false);
+        ctx_ter.fill();
+    });
+}
+
+
 function draw_network(n){
     n = Number(n);
     SIZE = Math.min(25, 250/(Number(n)+1));
@@ -93,21 +126,54 @@ function draw_network(n){
     architecture.innerHTML = "";
     NODES = [];
     LINKS = [];
+    NODES_BIS = [];
+    LINKS_BIS = [];
     node_x = draw_node(50, SHIFT+SIZE*n, 20, "#2ecc71", "node_x");
     node_y = draw_node(450, SHIFT+SIZE*n, 20, "#e74c3c", "node_y");
+    NODE_X = {
+        x: node_x.cx.baseVal.value,
+        y: node_x.cy.baseVal.value,
+        r: node_x.r.baseVal.value,
+        color: node_x.style.fill
+    };
+    NODE_Y = {
+        x: node_y.cx.baseVal.value,
+        y: node_y.cy.baseVal.value,
+        r: node_y.r.baseVal.value,
+        color: node_y.style.fill
+    };
     for (var i = 0; i < n; i++){
         var node = draw_node(250, SHIFT + SIZE + i * 2*SIZE, SIZE-1, "#3498db", "node_" + i);
         NODES.push(node);
+        NODES_BIS.push({
+            x: node.cx.baseVal.value,
+            y: node.cy.baseVal.value,
+            r: node.r.baseVal.value,
+            color: node.style.fill
+        });
     }
     NODES.forEach(function(node){
         link = connect_nodes(node_x, node);
         LINKS.push(link);
+        LINKS_BIS.push({
+            x1: node_x.cx.baseVal.value,
+            y1: node_x.cy.baseVal.value,
+            x2: node.cx.baseVal.value,
+            y2: node.cy.baseVal.value
+        });
     });
     NODES.forEach(function(node){
         link = connect_nodes(node, node_y);
         LINKS.push(link);
+        LINKS_BIS.push({
+            x1: node.cx.baseVal.value,
+            y1: node.cy.baseVal.value,
+            x2: node_y.cx.baseVal.value,
+            y2: node_y.cy.baseVal.value
+        });
     });
     architecture.height.baseVal.value = 500; // 2 * (n+1) * SIZE
+    draw_network_bis();
     draw_all_bis();
     return [NODES, LINKS];
 }

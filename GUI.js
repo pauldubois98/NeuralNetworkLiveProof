@@ -21,6 +21,13 @@ var node_y = undefined;
 var SIZE = undefined;
 var SHIFT = undefined;
 
+var canvas_ter = document.getElementById('network_architecture');
+var ctx_ter = canvas_ter.getContext('2d');
+var LINKS_BIS = [];
+var NODES_BIS = [];
+var NODE_X = undefined;
+var NODE_Y = undefined;
+
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
