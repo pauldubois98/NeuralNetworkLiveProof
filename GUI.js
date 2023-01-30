@@ -52,6 +52,18 @@ function draw_bounds() {
     ctx.moveTo(B, 0);
     ctx.lineTo(B, HEIGHT);
     ctx.stroke();
+    if(draw_legend_checkbox.checked){
+        ctx.fillStyle = "#FFFFFFAA";
+        ctx.fillRect(A-10, HEIGHT-20, 20, 20);
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "grey";
+        ctx.fillText("A", A-7, HEIGHT-2);
+        ctx.fillStyle = "#FFFFFFAA";
+        ctx.fillRect(B-10, HEIGHT-20, 20, 20);
+        ctx.font = "20px Arial";
+        ctx.fillStyle = "grey";
+        ctx.fillText("B", B-6, HEIGHT-2);
+    }
 }
 
 function typical_function(x) {
