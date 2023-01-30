@@ -1,25 +1,25 @@
 function apply_x_y(x){
     // architecture part
     node_x.style.fill = "#3efc91";
-    node_x.r.baseVal.value = SIZE/2 + 8*SIZE*Number(x)/WIDTH;
+    node_x.r.baseVal.value = SIZE/2 + 5*SIZE*Number(x)/WIDTH;
     node_y.style.fill = "#ff6f5c";
     if(BOXES.length !== 0){
         if (x < A) {
-            node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-BOXES[0].y1)/HEIGHT;
+            node_y.r.baseVal.value = SIZE/2 + 5*SIZE*(HEIGHT-BOXES[0].y1)/HEIGHT;
         } else {
             BOXES.forEach((box, index) => {
                 if(index < NODES.length && x >= box.x1 && x < box.x2){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
-                    node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-y)/HEIGHT;
+                    node_y.r.baseVal.value = SIZE/2 + 5*SIZE*(HEIGHT-y)/HEIGHT;
                 }
                 if(index == NODES.length && x >= box.x1){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
-                    node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-y)/HEIGHT;
+                    node_y.r.baseVal.value = SIZE/2 + 5*SIZE*(HEIGHT-y)/HEIGHT;
                 }
             });
         }
         if (x >= B && NODES.length > BOXES.length) {
-            node_y.r.baseVal.value = SIZE/2 + 8*SIZE*(HEIGHT-BOXES[BOXES.length-1].y2)/HEIGHT;
+            node_y.r.baseVal.value = SIZE/2 + 5*SIZE*(HEIGHT-BOXES[BOXES.length-1].y2)/HEIGHT;
         }
     }
     // plot part
