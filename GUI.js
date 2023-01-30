@@ -53,16 +53,28 @@ function draw_bounds() {
     ctx.lineTo(B, HEIGHT);
     ctx.stroke();
     if(draw_legend_checkbox.checked){
+        // A
         ctx.fillStyle = "#FFFFFFAA";
         ctx.fillRect(A-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
         ctx.fillText("A", A-7, HEIGHT-2);
+        // B
         ctx.fillStyle = "#FFFFFFAA";
         ctx.fillRect(B-10, HEIGHT-20, 20, 20);
         ctx.font = "20px Arial";
         ctx.fillStyle = "grey";
         ctx.fillText("B", B-6, HEIGHT-2);
+        // // f
+        // ctx.beginPath();
+        // ctx.strokeStyle = "black";
+        // ctx.lineWidth = 5;
+        // ctx.moveTo(18, 15);
+        // ctx.lineTo(38, 15);
+        // ctx.stroke();
+        // ctx.font = "20px Arial";
+        // ctx.fillStyle = "black";
+        // ctx.fillText("f", 5, 22);
     }
 }
 
