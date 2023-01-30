@@ -115,6 +115,11 @@ function draw_boxes() {
     });
     ctx.stroke();
     if(draw_subintervals_checkbox.checked && BOXES.length > 0){
+        ctx.fillStyle = "#FFFFFFAA";
+        ctx.fillRect(A-12, 351, 20, 20);
+        ctx.fillStyle = "#FFFFFFAA";
+        ctx.fillRect(B-7, 351, 20, 20);
+        ctx.fillStyle = "red";
         ctx.beginPath();
         var n = 0;
         ctx.strokeStyle = "red";
@@ -124,26 +129,20 @@ function draw_boxes() {
         BOXES.forEach(function (box) {
             ctx.moveTo(box.x1, Math.max(box.y_max, last_box_y_max) + pad);
             ctx.lineTo(box.x1, 350);
-            ctx.fillStyle = "#FFFFFFAA";
-            ctx.fillRect(box.x1-12, 351, 25, 25);
             ctx.font = "15px Arial";
-            ctx.fillStyle = "red";
             ctx.font = "12px Arial";
-            ctx.fillText("c", box.x1-8, 366);
-            ctx.fillText(n, box.x1-2, 374);
+            ctx.fillText("c", box.x1-9, 362);
+            ctx.fillText(n, box.x1-3, 370);
             last_box_y_max = box.y_max;
             n++;
         });
+        ctx.font = "15px Arial";
+        ctx.font = "12px Arial";
+        ctx.fillText("c", B-3, 362);
+        ctx.fillText(n, B+3, 370);
         ctx.moveTo(B, BOXES[BOXES.length-1].y_max + pad);
         ctx.lineTo(B, 350);
         ctx.stroke();
-        ctx.fillStyle = "#FFFFFFAA";
-        ctx.fillRect(B-12, 351, 25, 25);
-        ctx.font = "15px Arial";
-        ctx.fillStyle = "red";
-        ctx.font = "12px Arial";
-        ctx.fillText("c", B-8, 366);
-        ctx.fillText(n, B-2, 374);
         ctx.setLineDash([]);
     }
 }
