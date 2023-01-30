@@ -232,7 +232,9 @@ function draw_network_function(){
         if(BOXES.length > NODES.length){
             last_box = BOXES[NODES.length - 1];
             ctx_bis.lineTo(WIDTH, last_box.y2 + 
-                (WIDTH * (last_box.y2 - last_box.y1) / (last_box.x2 - last_box.x1)));
+                ((WIDTH - last_box.x2) * (last_box.y2 - last_box.y1) / (last_box.x2 - last_box.x1)));
+        } else {
+            ctx_bis.lineTo(WIDTH, BOXES[BOXES.length - 1].y2);
         }
         ctx_bis.stroke();
     }

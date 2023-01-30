@@ -89,8 +89,8 @@ function draw_network(n){
         LINKS.push(link);
     });
     architecture.height.baseVal.value = 500; // 2 * (n+1) * SIZE
+    draw_all_bis();
     return [NODES, LINKS];
 }
 
 draw_network(network_size.value);
-draw_all_bis(); 
