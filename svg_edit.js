@@ -41,7 +41,7 @@ function apply_x_y(x){
             node.r = SIZE/2;
         }
     });
-    draw_network_bis();
+    draw_network();
     // plot part
     draw_all_bis();
     ctx_bis.beginPath();
@@ -57,10 +57,10 @@ function apply_network(x){
     apply_x_y(x)
     NODE_X.color = "#2ecc71";
     NODE_Y.color = "#e74c3c";
-    draw_network_bis();
+    draw_network();
 }
 
-function draw_network_bis(){
+function draw_network(){
     // canvas part
     ctx_ter.clearRect(0, 0, canvas_ter.width, canvas_ter.height);
     // links
@@ -139,7 +139,7 @@ function create_network(n){
             y2: NODE_Y.y
         });
     });
-    draw_network_bis();
+    draw_network();
     draw_all_bis();
 }
 
