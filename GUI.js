@@ -295,7 +295,7 @@ function draw_network_function(){
                 ctx_bis.lineTo(box.x2, box.y2);
             }
         });
-        if(BOXES.length > NODES.length){
+        if(BOXES.length >= NODES.length){
             last_box = BOXES[Math.max(NODES.length - 1, 0)];
             ctx_bis.lineTo(WIDTH, last_box.y2 + 
                 ((WIDTH - last_box.x2) * (last_box.y2 - last_box.y1) / (last_box.x2 - last_box.x1)));
