@@ -40,10 +40,14 @@ label{
     flex-direction: row;
     align-items: center;
 }
-#network_architecture{
+#network_architecture_design{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#network_architecture{
+    border: solid 1px grey;
+    margin: 1em;
 }
 #network_visualization{
     display: flex;
