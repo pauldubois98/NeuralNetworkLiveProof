@@ -10,17 +10,17 @@ function apply_x_y(x){
             NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-BOXES[0].y1)/HEIGHT;
         } else {
             BOXES.forEach((box, index) => {
-                if(index < NODES.length && x >= box.x1 && x < box.x2){
+                if(index < NODES_BIS.length && x >= box.x1 && x < box.x2){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
-                if(index == NODES.length && x >= box.x1){
+                if(index == NODES_BIS.length && x >= box.x1){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
             });
         }
-        if (x >= B && NODES.length > BOXES.length) {
+        if (x >= B && NODES_BIS.length > BOXES.length) {
             NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-BOXES[BOXES.length-1].y2)/HEIGHT;
         }
     }

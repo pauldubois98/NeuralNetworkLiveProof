@@ -14,15 +14,10 @@ var canvas_bis = document.getElementById('plot_bis');
 var ctx_bis = canvas_bis.getContext('2d');
 var DOWN_BIS = false;
 
-var NODES = [];
-var LINKS = [];
-var node_x = undefined;
-var node_y = undefined;
-var SIZE = undefined;
-var SHIFT = undefined;
-
 var canvas_ter = document.getElementById('network_architecture');
 var ctx_ter = canvas_ter.getContext('2d');
+var SIZE = undefined;
+var SHIFT = undefined;
 var LINKS_BIS = [];
 var NODES_BIS = [];
 var NODE_X = undefined;
