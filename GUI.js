@@ -168,10 +168,11 @@ function draw_all() {
     draw_bounds();
     draw_function();
     if (EPSILON >= calculate_max_epsilon()) {
-        if (smart_boxes_checkbox.checked) {
-            calculate_boxes_smart();
-        } else {
-            calculate_boxes();
+        if (const_height.checked) {
+            calculate_boxes_const_height();
+        }
+        if (const_width.checked) {
+            calculate_boxes_const_width();
         }
     }
     if (draw_boxes_checkbox.checked) {

@@ -9,7 +9,7 @@ function calculate_max_epsilon() {
     return max_epsilon;
 }
 
-function calculate_boxes_smart() {
+function calculate_boxes_const_height() {
     BOXES = [];
     // find index of A in FUNCTION_PTS
     var index_A = FUNCTION_PTS.findIndex(e => e.x==A) 
@@ -62,7 +62,7 @@ function check_delta(delta) {
     }
     return true;
 }
-function calculate_boxes() {
+function calculate_boxes_const_width() {
     // caculate delta
     var delta = 1;
     while (check_delta(delta) && delta < FUNCTION_PTS.length + 1) {

@@ -54,8 +54,12 @@
         </div>
         <div>
             <div>
-                <input type="checkbox" id="smart_boxes_checkbox" onchange="draw_all();"></input>
-                <label for="smart_boxes_checkbox">Smart Boxes</label>
+                <input type="radio" id="const_width" name="subintervals" onchange="draw_all();" checked>
+                <label for="const_width">Constant Width</label>
+            </div>
+            <div>
+                <input type="radio" id="const_height" name="subintervals" onchange="draw_all();">
+                <label for="const_height">Constant Height</label>
             </div>
         </div>
     </fieldset>
