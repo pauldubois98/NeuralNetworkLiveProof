@@ -114,7 +114,7 @@ function draw_boxes() {
         ctx.lineTo(box.x2, box.y_min - pad);
     });
     ctx.stroke();
-    if(draw_subintervals_checkbox.checked){
+    if(draw_subintervals_checkbox.checked && BOXES.length > 0){
         ctx.beginPath();
         var n = 0;
         ctx.strokeStyle = "red";
