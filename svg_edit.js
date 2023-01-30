@@ -51,8 +51,27 @@ function apply_network(x){
             node.style.fill = "#54f8fb";
             node.r.baseVal.value = SIZE/2;
         }
-      });
+    });
     node_y.style.fill = "#e74c3c";
+    NODE_X.color = "#2ecc71";
+    NODES_BIS.forEach((node, index) => {
+        if(index < BOXES.length){
+            const box = BOXES[index];
+            if(x >= box.x1){
+                node.color = "#3498db";
+                node.r = SIZE/10 + SIZE*(x-box.x1)/WIDTH;
+            } else{
+                node.color = "#54f8fb";
+                node.r = SIZE/2;
+            }
+        } else{
+            // more nodes than boxes
+            node.color = "#54f8fb";
+            node.r = SIZE/2;
+        }
+    });
+    NODE_Y.color = "#e74c3c";
+    draw_network_bis();
 }
 
 function draw_node(cx, cy, r, color, name){
