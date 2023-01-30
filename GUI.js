@@ -104,8 +104,8 @@ function draw_boxes() {
     ctx.beginPath();
     ctx.strokeStyle = "red";
     ctx.lineWidth = 1;
+    const pad = 3;
     BOXES.forEach(function (box) {
-        const pad = 3;
         ctx.moveTo(box.x1, box.y_min - pad);
         ctx.lineTo(box.x2, box.y_min - pad);
         ctx.lineTo(box.x2, box.y_max + pad);
@@ -114,6 +114,38 @@ function draw_boxes() {
         ctx.lineTo(box.x2, box.y_min - pad);
     });
     ctx.stroke();
+    if(draw_subintervals_checkbox.checked){
+        ctx.beginPath();
+        var n = 0;
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 1;
+        ctx.setLineDash([5, 15]);
+        var last_box_y_max = 0;
+        BOXES.forEach(function (box) {
+            ctx.moveTo(box.x1, Math.max(box.y_max, last_box_y_max) + pad);
+            ctx.lineTo(box.x1, 350);
+            ctx.fillStyle = "#FFFFFFAA";
+            ctx.fillRect(box.x1-12, 351, 25, 25);
+            ctx.font = "15px Arial";
+            ctx.fillStyle = "red";
+            ctx.font = "12px Arial";
+            ctx.fillText("c", box.x1-8, 366);
+            ctx.fillText(n, box.x1-2, 374);
+            last_box_y_max = box.y_max;
+            n++;
+        });
+        ctx.moveTo(B, BOXES[BOXES.length-1].y_max + pad);
+        ctx.lineTo(B, 350);
+        ctx.stroke();
+        ctx.fillStyle = "#FFFFFFAA";
+        ctx.fillRect(B-12, 351, 25, 25);
+        ctx.font = "15px Arial";
+        ctx.fillStyle = "red";
+        ctx.font = "12px Arial";
+        ctx.fillText("c", B-8, 366);
+        ctx.fillText(n, B-2, 374);
+        ctx.setLineDash([]);
+    }
 }
 
 function draw_segments() {
