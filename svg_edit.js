@@ -1,28 +1,5 @@
 function apply_x_y(x){
     // architecture part
-    node_x.style.fill = "#3efc91";
-    node_x.r.baseVal.value = SIZE/10 + 5*SIZE*Number(x)/WIDTH;
-    node_y.style.fill = "#ff6f5c";
-    if(BOXES.length !== 0){
-        if (x < A) {
-            node_y.r.baseVal.value = SIZE/10 + 5*SIZE*(HEIGHT-BOXES[0].y1)/HEIGHT;
-        } else {
-            BOXES.forEach((box, index) => {
-                if(index < NODES.length && x >= box.x1 && x < box.x2){
-                    var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
-                    node_y.r.baseVal.value = SIZE/10 + 5*SIZE*(HEIGHT-y)/HEIGHT;
-                }
-                if(index == NODES.length && x >= box.x1){
-                    var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
-                    node_y.r.baseVal.value = SIZE/10 + 5*SIZE*(HEIGHT-y)/HEIGHT;
-                }
-            });
-        }
-        if (x >= B && NODES.length > BOXES.length) {
-            node_y.r.baseVal.value = SIZE/10 + 5*SIZE*(HEIGHT-BOXES[BOXES.length-1].y2)/HEIGHT;
-        }
-    }
-    // canvas part
     NODE_X.color = "#3efc91";
     NODE_X.r = SIZE/10 + 5*SIZE*Number(x)/WIDTH;
     NODE_Y.color = "#ff6f5c";
@@ -59,24 +36,6 @@ function apply_x_y(x){
 function apply_network(x){
     x = Number(x);
     apply_x_y(x)
-    node_x.style.fill = "#2ecc71";
-    NODES.forEach((node, index) => {
-        if(index < BOXES.length){
-            const box = BOXES[index];
-            if(x >= box.x1){
-                node.style.fill = "#3498db";
-                node.r.baseVal.value = SIZE/10 + SIZE*(x-box.x1)/WIDTH;
-            } else{
-                node.style.fill = "#54f8fb";
-                node.r.baseVal.value = SIZE/2;
-            }
-        } else{
-            // more nodes than boxes
-            node.style.fill = "#54f8fb";
-            node.r.baseVal.value = SIZE/2;
-        }
-    });
-    node_y.style.fill = "#e74c3c";
     NODE_X.color = "#2ecc71";
     NODES_BIS.forEach((node, index) => {
         if(index < BOXES.length){
@@ -86,7 +45,7 @@ function apply_network(x){
                 node.r = SIZE/10 + SIZE*(x-box.x1)/WIDTH;
             } else{
                 node.color = "#54f8fb";
-                node.r = SIZE/2;
+                node.r = SIZE/10;
             }
         } else{
             // more nodes than boxes
@@ -166,59 +125,46 @@ function draw_network(n){
         SIZE = 25;
         SHIFT = SIZE * (10 - n);
     }
-    architecture.innerHTML = "";
-    NODES = [];
-    LINKS = [];
     NODES_BIS = [];
     LINKS_BIS = [];
-    node_x = draw_node(50, SHIFT+SIZE*n, 20, "#2ecc71", "node_x");
-    node_y = draw_node(450, SHIFT+SIZE*n, 20, "#e74c3c", "node_y");
     NODE_X = {
-        x: node_x.cx.baseVal.value,
-        y: node_x.cy.baseVal.value,
-        r: node_x.r.baseVal.value,
-        color: node_x.style.fill
+        x: 50,
+        y: SHIFT+SIZE*n,
+        r: 20,
+        color: "#2ecc71"
     };
     NODE_Y = {
-        x: node_y.cx.baseVal.value,
-        y: node_y.cy.baseVal.value,
-        r: node_y.r.baseVal.value,
-        color: node_y.style.fill
+        x: 450,
+        y: SHIFT+SIZE*n,
+        r: 20,
+        color: "#e74c3c"
     };
     for (var i = 0; i < n; i++){
-        var node = draw_node(250, SHIFT + SIZE + i * 2*SIZE, SIZE-1, "#3498db", "node_" + i);
-        NODES.push(node);
         NODES_BIS.push({
-            x: node.cx.baseVal.value,
-            y: node.cy.baseVal.value,
-            r: node.r.baseVal.value,
-            color: node.style.fill
+            x: 250,
+            y: SHIFT + SIZE + i * 2*SIZE,
+            r: SIZE-1,
+            color: "#3498db"
         });
     }
-    NODES.forEach(function(node){
-        link = connect_nodes(node_x, node);
-        LINKS.push(link);
+    NODES_BIS.forEach(function(node){
         LINKS_BIS.push({
-            x1: node_x.cx.baseVal.value,
-            y1: node_x.cy.baseVal.value,
-            x2: node.cx.baseVal.value,
-            y2: node.cy.baseVal.value
+            x1: NODE_X.x,
+            y1: NODE_X.y,
+            x2: node.x,
+            y2: node.y
         });
     });
-    NODES.forEach(function(node){
-        link = connect_nodes(node, node_y);
-        LINKS.push(link);
+    NODES_BIS.forEach(function(node){
         LINKS_BIS.push({
-            x1: node.cx.baseVal.value,
-            y1: node.cy.baseVal.value,
-            x2: node_y.cx.baseVal.value,
-            y2: node_y.cy.baseVal.value
+            x1: node.x,
+            y1: node.y,
+            x2: NODE_Y.x,
+            y2: NODE_Y.y
         });
     });
-    architecture.height.baseVal.value = 500; // 2 * (n+1) * SIZE
     draw_network_bis();
     draw_all_bis();
-    return [NODES, LINKS];
 }
 
 draw_network(network_size.value);
