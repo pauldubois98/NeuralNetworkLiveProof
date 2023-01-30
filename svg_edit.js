@@ -93,7 +93,7 @@ function draw_network_bis(){
 }
 
 
-function draw_network(n){
+function create_network(n){
     n = Number(n);
     SIZE = Math.min(25, 250/(Number(n)+1));
     SHIFT = SIZE;
@@ -143,4 +143,4 @@ function draw_network(n){
     draw_all_bis();
 }
 
-draw_network(network_size.value);
+create_network(network_size.value);
