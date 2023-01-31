@@ -74,10 +74,13 @@
     <h2>Neural Network</h2>
     <h3>To Fit the Linear Segments</h3>
     <div id="network">
-        <div id="network_architecture">
-            <input type="number" id="network_size" value="4" min="1" max="50" step="1"
-                onchange="draw_network(network_size.value);"></input>
-            <svg id="architecture" width="500" height="300"></svg>
+        <div id="network_architecture_design">
+            <div>
+                <input type="number" id="network_size" value="4" min="1" max="50" step="1"
+                onchange="create_network(network_size.value);"></input>
+                <button id="network_subintervals" onclick="match_subintervals();">Match Subintervals</button>
+            </div>
+            <canvas id="network_architecture" width="500" height="500"></canvas>
         </div>
         <div id="network_visualization">
             <canvas id="plot_bis" width="800" height="400"></canvas>
@@ -106,7 +109,7 @@
 <!-- page scripts -->
 <script src="math.js"></script>
 <script src="GUI.js"></script>
-<script src="svg_edit.js"></script>
+<script src="GUI_ter.js"></script>
 <script src="GUI_bis.js"></script>
 <script src="convert.js"></script>
 
