@@ -18,8 +18,8 @@ var canvas_ter = document.getElementById('network_architecture');
 var ctx_ter = canvas_ter.getContext('2d');
 var SIZE = undefined;
 var SHIFT = undefined;
-var LINKS_BIS = [];
-var NODES_BIS = [];
+var LINKS = [];
+var NODES = [];
 var NODE_X = undefined;
 var NODE_Y = undefined;
 
@@ -295,12 +295,12 @@ function draw_network_function(){
         ctx_bis.moveTo(0, BOXES[0].y1);
         ctx_bis.lineTo(BOXES[0].x1, BOXES[0].y1);
         BOXES.forEach((box, index) => {
-            if(index < NODES_BIS.length){
+            if(index < NODES.length){
                 ctx_bis.lineTo(box.x2, box.y2);
             }
         });
-        if(BOXES.length >= NODES_BIS.length){
-            last_box = BOXES[Math.max(NODES_BIS.length - 1, 0)];
+        if(BOXES.length >= NODES.length){
+            last_box = BOXES[Math.max(NODES.length - 1, 0)];
             ctx_bis.lineTo(WIDTH, last_box.y2 + 
                 ((WIDTH - last_box.x2) * (last_box.y2 - last_box.y1) / (last_box.x2 - last_box.x1)));
         } else {

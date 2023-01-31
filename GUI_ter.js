@@ -10,22 +10,22 @@ function apply_x_y(x){
             NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-BOXES[0].y1)/HEIGHT;
         } else {
             BOXES.forEach((box, index) => {
-                if(index < NODES_BIS.length && x >= box.x1 && x < box.x2){
+                if(index < NODES.length && x >= box.x1 && x < box.x2){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
-                if(index < NODES_BIS.length && x >= box.x1){
+                if(index < NODES.length && x >= box.x1){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
             });
         }
-        if (x >= B && NODES_BIS.length > BOXES.length) {
+        if (x >= B && NODES.length > BOXES.length) {
             NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-BOXES[BOXES.length-1].y2)/HEIGHT;
         }
     }
     // hidden
-    NODES_BIS.forEach((node, index) => {
+    NODES.forEach((node, index) => {
         if(index < BOXES.length){
             const box = BOXES[index];
             if(x >= box.x1){
@@ -76,7 +76,7 @@ function draw_network(){
     ctx_ter.beginPath();
     ctx_ter.strokeStyle = "grey";
     ctx_ter.lineWidth = 1;
-    LINKS_BIS.forEach(link => {
+    LINKS.forEach(link => {
         ctx_ter.moveTo(link.x1, link.y1);
         ctx_ter.lineTo(link.x2, link.y2);
     });
@@ -93,7 +93,7 @@ function draw_network(){
     ctx_ter.arc(NODE_Y.x, NODE_Y.y, NODE_Y.r, 0, 2 * Math.PI, false);
     ctx_ter.fill();
     // hidden
-    NODES_BIS.forEach(node => {
+    NODES.forEach(node => {
         ctx_ter.beginPath();
         ctx_ter.fillStyle = node.color;
         ctx_ter.arc(node.x, node.y, node.r, 0, 2 * Math.PI, false);
@@ -110,8 +110,8 @@ function create_network(n){
         SIZE = 25;
         SHIFT = SIZE * (10 - n);
     }
-    NODES_BIS = [];
-    LINKS_BIS = [];
+    NODES = [];
+    LINKS = [];
     NODE_X = {
         x: 50,
         y: SHIFT+SIZE*n,
@@ -125,23 +125,23 @@ function create_network(n){
         color: "#e74c3c"
     };
     for (var i = 0; i < n; i++){
-        NODES_BIS.push({
+        NODES.push({
             x: 250,
             y: SHIFT + SIZE + i * 2*SIZE,
             r: SIZE-1,
             color: "#3498db"
         });
     }
-    NODES_BIS.forEach(function(node){
-        LINKS_BIS.push({
+    NODES.forEach(function(node){
+        LINKS.push({
             x1: NODE_X.x,
             y1: NODE_X.y,
             x2: node.x,
             y2: node.y
         });
     });
-    NODES_BIS.forEach(function(node){
-        LINKS_BIS.push({
+    NODES.forEach(function(node){
+        LINKS.push({
             x1: node.x,
             y1: node.y,
             x2: NODE_Y.x,
