@@ -75,8 +75,11 @@
     <h3>To Fit the Linear Segments</h3>
     <div id="network">
         <div id="network_architecture_design">
-            <input type="number" id="network_size" value="4" min="1" max="50" step="1"
+            <div>
+                <input type="number" id="network_size" value="4" min="1" max="50" step="1"
                 onchange="create_network(network_size.value);"></input>
+                <button id="network_subintervals" onclick="match_subintervals();">Match Subintervals</button>
+            </div>
             <canvas id="network_architecture" width="500" height="500"></canvas>
         </div>
         <div id="network_visualization">

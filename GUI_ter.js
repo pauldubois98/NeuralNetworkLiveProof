@@ -143,4 +143,9 @@ function create_network(n){
     draw_all_bis();
 }
 
+function match_subintervals(){
+    network_size.value = Math.max(1, BOXES.length+1);
+    create_network(network_size.value);
+}
+
 create_network(network_size.value);

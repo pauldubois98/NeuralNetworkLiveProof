@@ -48,6 +48,7 @@ label{
 #network_architecture{
     border: solid 1px grey;
     margin: 1em;
+    margin-top: 0;
 }
 #network_visualization{
     display: flex;
@@ -59,8 +60,6 @@ label{
         flex-direction: column;
     }
 }
-
-#architecture{
-    border: 1px solid grey;
-    margin: 1em;
+#network_size{
+    width: 5em;
 }
