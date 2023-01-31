@@ -20,6 +20,12 @@ function download_svg(dl=true){
         text_element.style.fill = "grey";
         text_element.innerHTML = "b";
         svg.appendChild(text_element);
+        // opacity of rectangles
+        for(var i=0; i<svg.children.length; i++){
+            if(svg.children[i].tagName == 'rect'){
+                svg.children[i].style = "fill:#ffffff;fill-opacity:0.75" 
+            }
+        }
     }
     if(draw_subintervals_checkbox.checked && draw_boxes_checkbox.checked && BOXES.length > 0){
         // c_n
