@@ -35,6 +35,15 @@ function apply_x_y(x){
                 node.color = "#54f8fb";
                 node.r = SIZE/10;
             }
+        } else if(index == BOXES.length){
+            const box = BOXES[index-1];
+            if(x >= box.x2){
+                node.color = "#3498db";
+                node.r = SIZE/10 + SIZE*(x-box.x2)/WIDTH;
+            } else{
+                node.color = "#54f8fb";
+                node.r = SIZE/10;
+            }
         } else{
             // more nodes than boxes
             node.color = "#54f8fb";
