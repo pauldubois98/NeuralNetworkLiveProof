@@ -260,6 +260,11 @@ canvas.addEventListener('mouseup', function (e) {
     auto_bounds();
     draw_all();
 });
+canvas.addEventListener('mouseleave', function (e) {
+    DOWN = false;
+    auto_bounds();
+    draw_all();
+});
 canvas.addEventListener('mousedown', function (e) {
     var rect = canvas.getBoundingClientRect();
     var x = e.clientX - rect.left;
