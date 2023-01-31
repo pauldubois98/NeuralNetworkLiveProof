@@ -65,6 +65,12 @@ function download_svg(dl=true){
         if(dots){
             dots.style="stroke-dasharray:4,1;stroke-dashoffset:0"
         }
+        // opacity of rectangles
+        for(var i=0; i<svg.children.length; i++){
+            if(svg.children[i].tagName == 'rect'){
+                svg.children[i].style = "fill:#ffffff;fill-opacity:0.75" 
+            }
+        }
     }
 
     // download the svg
