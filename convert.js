@@ -15,7 +15,7 @@ function download_svg(dl=true){
         svg.appendChild(text_element);
         // b
         var text_element = document.createElementNS("http://www.w3.org/2000/svg", 'text');
-        text_element.setAttribute("x", B-5);
+        text_element.setAttribute("x", B-4);
         text_element.setAttribute("y", HEIGHT-7);
         text_element.style.fill = "grey";
         text_element.innerHTML = "b";
@@ -43,14 +43,14 @@ function download_svg(dl=true){
             n++;
         });
         var text_element = document.createElementNS("http://www.w3.org/2000/svg", 'text');
-        text_element.setAttribute("x", B-8);
+        text_element.setAttribute("x", B-2);
         text_element.setAttribute("y", 362);
         text_element.style = "fill:red;font-size:12px";
         text_element.innerHTML = "c";
         svg.appendChild(text_element);
         var text_element = document.createElementNS("http://www.w3.org/2000/svg", 'text');
         ctx.font = "15px Arial";
-        text_element.setAttribute("x", B-3);
+        text_element.setAttribute("x", B+2);
         text_element.setAttribute("y", 370);
         text_element.style = "fill:red;font-size:12px";
         text_element.innerHTML = n;
