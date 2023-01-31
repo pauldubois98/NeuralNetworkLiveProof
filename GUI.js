@@ -24,7 +24,9 @@ var NODE_X = undefined;
 var NODE_Y = undefined;
 
 function clear() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (!EXPORT) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 }
 
 function draw_axes(x = 50, y = 350, arrow_size = 8) {
