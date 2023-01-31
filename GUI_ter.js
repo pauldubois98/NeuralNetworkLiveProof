@@ -14,7 +14,7 @@ function apply_x_y(x){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
-                if(index == NODES_BIS.length && x >= box.x1){
+                if(index < NODES_BIS.length && x >= box.x1){
                     var y = box.y1 + (box.y1 - box.y2)*(x - box.x1)/(box.x1 - box.x2);
                     NODE_Y.r = SIZE/10 + 3*SIZE*(HEIGHT-y)/HEIGHT;
                 }
