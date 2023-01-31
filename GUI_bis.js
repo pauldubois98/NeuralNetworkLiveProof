@@ -5,6 +5,10 @@ canvas_bis.addEventListener('mouseup', function (e) {
     DOWN_BIS = false;
     apply_network(x);
 });
+canvas_bis.addEventListener('mouseleave', function (e) {
+    DOWN_BIS = false;
+    apply_network(x);
+});
 canvas_bis.addEventListener('mousedown', function (e) {
     var rect = canvas_bis.getBoundingClientRect();
     var x = e.clientX - rect.left;
