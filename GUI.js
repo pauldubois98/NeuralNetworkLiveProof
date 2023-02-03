@@ -261,8 +261,14 @@ canvas.addEventListener('mouseup', function (e) {
     draw_all();
 });
 canvas.addEventListener('mouseleave', function (e) {
+    if (DOWN) {
+        var rect = canvas.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        add_point(x, y);
+        auto_bounds();
+    }
     DOWN = false;
-    auto_bounds();
     draw_all();
 });
 canvas.addEventListener('mousedown', function (e) {
