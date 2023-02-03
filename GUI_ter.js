@@ -85,18 +85,18 @@ function draw_network(){
     // x
     ctx_ter.beginPath();
     ctx_ter.fillStyle = NODE_X.color;
-    ctx_ter.arc(NODE_X.x, NODE_X.y, NODE_X.r, 0, 2 * Math.PI, false);
+    ctx_ter.arc(NODE_X.x, NODE_X.y, Math.max(0, NODE_X.r), 0, 2 * Math.PI, false);
     ctx_ter.fill();
     // y
     ctx_ter.beginPath();
     ctx_ter.fillStyle = NODE_Y.color;
-    ctx_ter.arc(NODE_Y.x, NODE_Y.y, NODE_Y.r, 0, 2 * Math.PI, false);
+    ctx_ter.arc(NODE_Y.x, NODE_Y.y, Math.max(0, NODE_Y.r), 0, 2 * Math.PI, false);
     ctx_ter.fill();
     // hidden
     NODES.forEach(node => {
         ctx_ter.beginPath();
         ctx_ter.fillStyle = node.color;
-        ctx_ter.arc(node.x, node.y, node.r, 0, 2 * Math.PI, false);
+        ctx_ter.arc(node.x, node.y, Math.max(0, node.r), 0, 2 * Math.PI, false);
         ctx_ter.fill();
     });
 }
