@@ -169,19 +169,34 @@ function hover_x(){
 }
 
 function hover_y(){
-    hover.innerText = "$y = \\sum_{n=0}^{" + Math.min(NODES.length, BOXES.length) + "} \\gamma_n (x-c_n)_+$";
+    hover.innerHTML = "$y = \\sum_{k=0}^{" + Math.min(NODES.length, BOXES.length+1) + "} \\gamma_k (x-c_k)_+$";
     hover.style.color = "#e74c3c";
     AMprocessNodeR(hover, false);
 }
 
 function hover_node(n){
-    hover.innerText = "$n_{" + n + "} = (x-c_{"+n+"})_+$";
+    hover.innerHTML = "$n_{" + (n+1) + "} = (x-c_{" + (n+1) + "})_+$";
     hover.style.color = "#3498db";
     AMprocessNodeR(hover, false);
 }
 
 function hoover_none(){
-    hover.innerText = "";
+    hover.innerHTML = "";
     AMprocessNodeR(hover, false);
 }
 
+canvas_ter.addEventListener('mousemove', function(e) {
+    var rect = canvas_ter.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    var node = NODES.find(node => Math.sqrt(Math.pow(node.x-x, 2) + Math.pow(node.y-y, 2)) < node.r);
+    if (node){
+        hover_node(NODES.indexOf(node));
+    } else if (Math.sqrt(Math.pow(NODE_X.x-x, 2) + Math.pow(NODE_X.y-y, 2)) < NODE_X.r){
+        hover_x();
+    } else if (Math.sqrt(Math.pow(NODE_Y.x-x, 2) + Math.pow(NODE_Y.y-y, 2)) < NODE_Y.r){
+        hover_y();
+    } else{
+        hoover_none();
+    }
+}, false);
