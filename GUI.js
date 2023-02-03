@@ -265,7 +265,7 @@ canvas.addEventListener('mouseleave', function (e) {
         var rect = canvas.getBoundingClientRect();
         var x = e.clientX - rect.left;
         var y = e.clientY - rect.top;
-        add_point(x, y);
+        add_point(Math.max(0, Math.min(x, WIDTH)), Math.max(0, Math.min(y, HEIGHT)));
         auto_bounds();
     }
     DOWN = false;
