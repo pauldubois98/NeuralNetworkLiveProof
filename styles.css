@@ -63,3 +63,7 @@ label{
 #network_size{
     width: 5em;
 }
+#hover{
+    height: 2em;
+    font-size: large;
+}

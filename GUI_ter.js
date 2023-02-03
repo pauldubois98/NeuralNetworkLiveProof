@@ -158,3 +158,30 @@ function match_subintervals(){
 }
 
 create_network(network_size.value);
+
+
+//////////////////////////////////////////////////////////
+
+function hover_x(){
+    hover.innerText = "$x$";
+    hover.style.color = "#2ecc71";
+    AMprocessNodeR(hover, false);
+}
+
+function hover_y(){
+    hover.innerText = "$y = \\sum_{n=0}^{" + Math.min(NODES.length, BOXES.length) + "} \\gamma_n (x-c_n)_+$";
+    hover.style.color = "#e74c3c";
+    AMprocessNodeR(hover, false);
+}
+
+function hover_node(n){
+    hover.innerText = "$n_{" + n + "} = (x-c_{"+n+"})_+$";
+    hover.style.color = "#3498db";
+    AMprocessNodeR(hover, false);
+}
+
+function hoover_none(){
+    hover.innerText = "";
+    AMprocessNodeR(hover, false);
+}
+

@@ -81,11 +81,13 @@
                 <button id="network_subintervals" onclick="match_subintervals();">Match Subintervals</button>
             </div>
             <canvas id="network_architecture" width="500" height="500"></canvas>
+            <p id="hover"></p>
         </div>
         <div id="network_visualization">
             <canvas id="plot_bis" width="800" height="400"></canvas>
         </div>
     </div>
+    <div style="height: 3em;"></div>
 
 </body>
 
@@ -106,6 +108,9 @@
 <script type="text/javascript" src="MochiKit/Visual.js"></script>
 <script type="text/javascript" src="SVGKit/SVGKit.js"></script>
 <script type="text/javascript" src="SVGKit/SVGCanvas.js"></script>
+<!-- MathML imports; checkout https://www.maths.nottingham.ac.uk/plp/pmadw/lm.html -->
+<script type="text/javascript" src="LaTeXMathML/main.js"></script>
+
 <!-- page scripts -->
 <script src="math.js"></script>
 <script src="GUI.js"></script>
